@@ -6,7 +6,7 @@ It focuses on **cleaning up the UI**, **enhancing smooth transitions**, and **po
 
 The overall aesthetic aims to make Firefox feel closer to a **refined hybrid between Zen Browser and a futuristic, lightweight UI shell** — smooth, minimal, and elegant.
 
-![Zenhanced Preview](https://github.com/user-attachments/assets/39ed2a93-1bf8-423c-8ea1-83499832247a)
+![Zenhanced Preview](https://github.com/user-attachments/assets/7423f2f3-caff-4c00-899f-149024c92b4e)
 
 ---
 
