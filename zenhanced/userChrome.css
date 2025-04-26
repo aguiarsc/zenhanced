@@ -274,12 +274,37 @@
 /* CtrlTab panel styling */
 #ctrlTab-panel {
   background: none !important;
-  transition: opacity 0.3s ease, transform 0.3s ease !important;
+  backdrop-filter: blur(5px) !important;
+  border-radius: 3px !important;
+  box-shadow: none !important;
+  border: none !important;
+  padding: 8px !important;
+  transition: opacity 0.4s ease, transform 0.4s ease !important;
+  transform-origin: center !important;
+  -moz-window-dragging: no-drag !important;
+}
+
+#ctrlTab-panel > * {
+  background: none !important;
+}
+
+#ctrlTab-panel .panel-arrowcontainer,
+#ctrlTab-panel .panel-arrowcontent {
+  background: none !important;
+  border: none !important;
 }
 
 .ctrlTab-canvas {
-  background-color: transparent !important;
-  transition: transform 0.2s ease, opacity 0.2s ease !important;
+  background-color: none !important;
+  border-radius: 3px !important;
+  transition: transform 0.3s ease, opacity 0.3s ease !important;
+  filter: none !important;
+}
+
+.ctrlTab-canvas[selected="true"] {
+  transform: scale(1.05) !important;
+  box-shadow: none !important;
+  background-color: none !important;
 }
 
 .ctrlTab-canvas:hover {
@@ -287,11 +312,304 @@
 }
 
 .ctrlTab-label {
-  background-color: transparent !important;
-  transition: opacity 0.2s ease !important;
+  background-color: none !important;
+  color: white !important;
+  padding: 2px 6px !important;
+  margin-top: 3px !important;
+  font-weight: 400 !important;
+  transition: opacity 0.3s ease !important;
 }
 
-.ctrlTab-favicon-container image {
+.ctrlTab-preview {
+  background-color: none !important;
+}
+
+.ctrlTab-preview-inner {
+  background: none !important;
+}
+
+.ctrlTab-preview-thumbnail {
+  background-color: none !important;
+}
+
+#ctrlTab-panel .panel-arrowbox,
+#ctrlTab-panel .panel-arrowcontent > *,
+.ctrlTab-tabList,
+.ctrlTab-tab,
+.ctrlTab-preview-container,
+.ctrlTab-preview-thumbnail,
+.ctrlTab-preview-inner > *:not(img) {
+  background-color: none !important;
+}
+
+.ctrlTab-favicon-container {
   display: none !important;
-  transition: opacity 0.2s ease !important;
+}
+
+.ctrlTab-preview-inner > .ctrlTab-favicon {
+  display: none !important;
+}
+
+#ctrlTab-panel[fadeout] {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transition: none !important;
+}
+
+#ctrlTab-panel:not([showing]) {
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Enhanced cursor animations */
+:root {
+  --cursor-default: default;
+  --cursor-pointer: pointer;
+  --cursor-text: text;
+}
+
+button,
+.button,
+.toolbarbutton-1,
+.subviewbutton,
+#TabsToolbar .tabs-newtab-button,
+.urlbar-icon,
+.panel-subview-body .subview-subheader {
+  cursor: var(--cursor-pointer) !important;
+  transition: transform 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+}
+
+button:hover,
+.button:hover,
+.toolbarbutton-1:hover,
+.subviewbutton:hover {
+  transform: scale(1.08) !important;
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+}
+
+button:active,
+.button:active,
+.toolbarbutton-1:active,
+.subviewbutton:active {
+  transform: scale(0.92) !important;
+  transition: transform 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+}
+
+input[type="text"],
+input[type="search"],
+input[type="url"],
+textarea,
+#urlbar-input,
+.searchbar-textbox {
+  cursor: var(--cursor-text) !important;
+}
+
+.tabbrowser-tab {
+  transition: transform 0.2s ease-out !important;
+}
+
+.tabbrowser-tab:hover {
+  transform: translateY(-1px) !important;
+}
+
+.tabbrowser-tab[selected] {
+  animation: tab-select-pulse 0.8s cubic-bezier(0.22, 0.61, 0.36, 1) !important;
+}
+
+@keyframes tab-select-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(128, 128, 128, 0.4); }
+  30% { box-shadow: 0 0 0 8px rgba(128, 128, 128, 0.3); }
+  70% { box-shadow: 0 0 0 12px rgba(128, 128, 128, 0.1); }
+  100% { box-shadow: 0 0 0 0 rgba(128, 128, 128, 0); }
+}
+
+.toolbarbutton-1:hover,
+button:hover,
+.button:hover,
+.subviewbutton:hover {
+  box-shadow: 0 0 8px 2px rgba(128, 128, 128, 0.2) !important;
+  transition: box-shadow 0.3s ease-in-out, transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+}
+
+/* Tab animations */
+.tab-background {
+  transition: background-color 0.4s ease, box-shadow 0.4s ease, background 0.5s ease !important;
+}
+
+.tab-group-label-container {
+  transition: background-color 0.4s ease, box-shadow 0.4s ease, background 0.5s ease !important;
+}
+
+/* Toolbar button animations */
+.toolbarbutton-1 {
+  &:hover > :is(.toolbarbutton-icon, .toolbarbutton-text, .toolbarbutton-badge-stack) {
+    transition: background-color 0.3s ease-in-out, 
+                outline-color 0.3s ease-in-out !important; 
+  }
+  
+  > :is(.toolbarbutton-icon, .toolbarbutton-text, .toolbarbutton-badge-stack) {
+    transition: background-color 0.3s ease-in-out, 
+                outline-color 0.3s ease-in-out !important;
+  }
+}
+
+.identity-box-button {
+  transition: background-color 0.3s ease-in-out, 
+              outline-color 1.3s ease-in-out !important;
+}
+
+/* URL bar controls animations */
+#reader-mode-button, 
+#star-button-box, 
+#zen-split-views-box, 
+#pageActionButton, 
+#urlbar-zoom-button, 
+#shopping-sidebar-button, 
+#translations-button, 
+#picture-in-picture-button, 
+#page-action-buttons, 
+#urlbar-go-button, 
+#urlbar-revert-button-container {
+  transition: background-color 0.3s ease-in-out, 
+              outline-color 0.3s ease-in-out !important;
+}
+
+/* Tab function icons animations */
+.close-icon {
+  transition: background-color 0.3s ease-in-out, transform 0.2s ease !important;
+}
+
+.close-icon:hover {
+  transform: scale(1.05) !important;
+}
+
+.tab-reset-button {
+  transition: background-color 0.3s ease-in-out, transform 0.2s ease !important;
+}
+
+.tab-reset-button:hover {
+  transform: scale(1.05) !important;
+}
+
+#tabs-newtab-button {
+  transition: background-color 0.3s ease-in-out, transform 0.2s ease !important;
+}
+
+#tabs-newtab-button:hover {
+  transform: scale(1.05) !important;
+}
+
+/* Other UI element animations */
+.subviewbutton {
+  transition: background-color 0.3s ease-in-out, transform 0.15s ease-out !important;
+}
+
+.subviewbutton:hover {
+  transform: translateY(-1px) !important;
+}
+
+.urlbarView-row-inner {
+  transition: background-color 0.3s ease-in-out, transform 0.2s ease !important;
+}
+
+.urlbarView-row-inner:hover {
+  transform: translateX(2px) !important;
+}
+
+/* Improved scrollbar styling */
+:root {
+  scrollbar-width: auto !important;
+  scrollbar-color: rgba(128, 128, 128, 0.096) transparent !important;
+}
+
+* {
+  scrollbar-width: auto !important;
+  scrollbar-color: rgba(128, 128, 128, 0.15) transparent !important;
+}
+
+@-moz-document url-prefix("") {
+  * {
+    scrollbar-width: auto !important;
+    scrollbar-color: rgba(128, 128, 128, 0.15) transparent !important;
+  }
+  
+  html, body {
+    scrollbar-width: auto !important;
+    scrollbar-color: rgba(128, 128, 128, 0.15) transparent !important;
+  }
+  
+  div, section, article, aside, nav, main {
+    scrollbar-width: auto !important;
+    scrollbar-color: rgba(128, 128, 128, 0.15) transparent !important;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 14px !important;
+  height: 14px !important;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(128, 128, 128, 0.15) !important;
+  border-radius: 3px !important;
+  border: 3px solid transparent !important;
+  background-clip: content-box !important;
+  transition: background-color 0.3s ease !important;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(128, 128, 128, 0.3) !important;
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent !important;
+}
+
+/* Border radius consistency */
+#urlbar {
+  border-radius: 3px !important;
+}
+
+#urlbar-background {
+  border-radius: 3px !important;
+}
+
+.tab-background:is([selected], [multiselected]) {
+  border-radius: 3px !important;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 3px !important;
+}
+
+#statuspanel-label {
+  border-radius: 3px !important;
+}
+
+button, 
+.button, 
+.toolbarbutton-1, 
+.subviewbutton {
+  border-radius: 3px !important;
+}
+
+.urlbarView-row-inner,
+.panel-subview-body,
+.panel-arrowcontent,
+.urlbarView,
+.findbar-container,
+.findbar-textbox,
+.findbar-find-previous,
+.findbar-find-next,
+.downloadProgress,
+.menu-iconic-left,
+.identity-popup-security-content,
+.identity-popup-expander,
+.search-panel-input,
+.searchbar-textbox {
+  border-radius: 3px !important;
 }
