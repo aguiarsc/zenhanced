@@ -2,6 +2,8 @@
 
 A sleek, minimalist Firefox CSS customization that enhances the Zen Browser interface with clean aesthetics and smooth transitions.
 
+![Image](https://github.com/user-attachments/assets/06168259-1e08-4266-8499-4b294435b80b)
+
 ## Features
 
 ### UI Enhancements
