@@ -1,6 +1,6 @@
 # ✨ Zenhanced
 
-**Zenhanced** is a minimalist Firefox CSS customization that transforms the Zen Browser into an even sleeker, more refined experience.
+**Zenhanced** is a minimalist Firefox CSS customization that transforms the Zen Browser into an even cleaner, more refined experience.
 
 It focuses on **cleaning up the UI**, **enhancing smooth transitions**, and **polishing every interaction** — creating a lightweight, distraction-free browsing environment. Tabs, toolbars, panels, and the start page are all redesigned with subtle animations, glass-like effects, and modern transparency to emphasize calmness and clarity.
 
