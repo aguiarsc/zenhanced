@@ -1,0 +1,297 @@
+/* Hidden elements */
+#titlebar-buttonbox-container,
+#zen-expand-sidebar-button,
+#zen-sidepanel-button,
+#back-button,
+#forward-button,
+#star-button-box,
+#reader-mode-button,
+#blocked-permissions-container,
+#userContext-indicator,
+#tabbrowser-arrowscrollbox-periphery,
+#workspace-indicator,
+.workspace-icon,
+.workspace-label
+{
+  display: none !important;
+}
+
+.tab-icon-overlay {
+  display: none !important;
+}
+
+/* URL bar styling */
+#urlbar {
+  width: 40vw !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  position: fixed !important;
+  border-radius: 3px !important;
+  transition: width 0.3s ease, opacity 0.3s ease !important;
+}
+
+#urlbar:hover {
+  opacity: 1 !important;
+}
+
+#urlbar:not(:hover):not([focused]) {
+  opacity: 0.85 !important;
+}
+
+#urlbar-input-container {
+  text-align: center !important;
+  justify-content: center !important;
+  transition: background-color 0.2s ease-in-out !important;
+}
+
+.urlbar-input-box {
+  text-align: center !important;
+  transition: color 0.2s ease !important;
+}
+
+#urlbar-background {
+  border: 1px solid #ffffff13 !important;
+  border-radius: 3px !important;
+  background-color: #161616 !important;
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+#urlbar[focused] > #urlbar-background {
+  box-shadow: 0 0 0 2px rgba(58, 133, 255, 0.3) !important;
+  transition: box-shadow 0.2s ease-in-out !important;
+}
+
+#urlbar:not([focused]) > #urlbar-background {
+  background: transparent !important;
+  transition: background 0.3s ease-out !important;
+}
+
+#identity-icon-box:not(:hover),
+#identity-permission-box:not(:hover) {
+  background-color: transparent !important;
+  transition: background-color 0.2s ease-in-out !important;
+}
+
+#identity-icon-box:hover,
+#identity-permission-box:hover {
+  background-color: rgba(128, 128, 128, 0.2) !important;
+  transition: background-color 0.2s ease-in-out !important;
+}
+
+/* Navigation and control elements */
+#back-button {
+  padding-left: 8px !important;
+  transition: opacity 0.2s ease !important;
+}
+
+#userContext-label {
+  color: var(--zen-primary-color) !important;
+  transition: color 0.2s ease !important;
+}
+
+#tracking-protection-icon-container {
+  order: 3 !important;
+  transition: opacity 0.2s ease, transform 0.2s ease !important;
+}
+
+#tracking-protection-icon-container:hover {
+  transform: scale(1.05) !important;
+}
+
+/* Sidebar elements */
+#sidebar-box::before {
+  content: "";
+  display: block;
+  height: 40px;
+  width: 100%;
+}
+
+#zen-current-workspace-indicator {
+  display: none !important;
+}
+
+#zen-current-workspace-indicator-container {
+  display: none !important;
+}
+
+#zen-sidebar-top-buttons,
+#zen-sidebar-top-buttons-customization-target {
+  margin: 0px !important;
+  transition: opacity 0.2s ease !important;
+}
+
+#downloads-button {
+  order: 1 !important;
+  transition: transform 0.2s ease !important;
+}
+
+#downloads-button:hover {
+  transform: scale(1.05) !important;
+}
+
+#zen-profile-button {
+  order: 2 !important;
+  transition: transform 0.2s ease !important;
+}
+
+#zen-profile-button:hover {
+  transform: scale(1.05) !important;
+}
+
+#zen-sidebar-bottom-buttons {
+  margin-bottom: 4px !important;
+  transition: opacity 0.2s ease !important;
+}
+
+#Zen-sidebar-splitter {
+  opacity: 1 !important;
+  border: none !important;
+  min-width: 0 !important;
+  width: 1px !important;
+  height: 0.1% !important;
+  transition: width 0.3s ease, height 0.3s ease, background-color 0.3s ease !important;
+}
+
+#navigator-toolbox:hover ~ #Zen-sidebar-splitter,
+#Zen-sidebar-splitter:hover,
+#Zen-sidebar-splitter:hover:active {
+  width: 6px !important;
+  height: 100% !important;
+  background-color: rgba(128, 128, 128, 0.2) !important;
+}
+
+/* Tab styling */
+.tab-background:is([selected], [multiselected]) {
+  background-color: transparent !important;
+  background-image: none !important;
+  border: 1px solid var(--zen-colors-border) !important;
+  border-radius: 3px !important;
+  transition: border-color 0.2s ease, background-color 0.2s ease !important;
+}
+
+.tabbrowser-tab .tab-background {
+  transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.3s ease !important;
+}
+
+.tabbrowser-tab:hover .tab-background:not([selected]) {
+  background-color: rgba(128, 128, 128, 0.1) !important;
+}
+
+#tabbrowser-tabs .tabbrowser-tab:not([pinned]):is([visuallyselected]):not(:hover) .tab-close-button {
+  display: none !important;
+  transition: opacity 0.2s ease !important;
+}
+
+.tabbrowser-tab .tab-close-button {
+  opacity: 0;
+  transition: opacity 0.2s ease !important;
+}
+
+.tabbrowser-tab:hover .tab-close-button {
+  opacity: 1;
+}
+
+/* Panel and status elements */
+#tabbrowser-tabpanels[zen-split-view="true"] .browserSidebarContainer.deck-selected {
+  outline: var(--zen-colors-border) !important;
+  transition: outline 0.3s ease !important;
+}
+
+#statuspanel {
+  margin: 6px !important;
+  transition: opacity 0.3s ease !important;
+}
+
+#statuspanel-label {
+  font-size: 12px !important;
+  padding: 2px 10px !important;
+  border-radius: 3px !important;
+  border: 1.5px solid var(--zen-colors-border) !important;
+  background: var(--zen-colors-tertiary) !important;
+  transition: background 0.3s ease, border-color 0.3s ease, opacity 0.3s ease !important;
+}
+
+/* Background and window styling */
+#navigator-toolbox {
+  background-color: rgba(0, 0, 0, 0) !important;
+  transition: background-color 0.3s ease !important;
+}
+
+#main-window {
+  background-color: rgba(41, 47, 52, 0.2) !important;
+  -moz-appearance: none !important;
+  appearance: none !important;
+  background-image: none !important;
+  --zen-main-browser-background: rgba(0, 0, 0, 0.5) !important;
+  transition: background-color 0.4s ease !important;
+}
+
+/* Media queries */
+@media (-moz-bool-pref: "zen.view.compact") {
+  #tabbrowser-tabpanels {
+    padding: 0 !important;
+    transition: padding 0.3s ease !important;
+  }
+
+  #tabbrowser-tabpanels .browserSidebarContainer:not([zen-split="true"]) {
+    --zen-webview-border-radius: 0 !important;
+    --zen-element-separation: 0 !important;
+    transition: all 0.3s ease !important;
+  }
+}
+
+/* Document rules */
+@-moz-document url-prefix("chrome:") {
+  @media (-moz-bool-pref: "zen.view.compact") and (-moz-bool-pref: "zen.view.compact.hide-tabbar") {
+    #navigator-toolbox {
+      margin: auto !important;
+      height: 75vh !important;
+      transition: height 0.3s ease, margin 0.3s ease !important;
+    }
+  }
+
+  :root:not([customizing]) #back-button[disabled] {
+    display: none !important;
+    transition: opacity 0.2s ease !important;
+  }
+
+  :root:not([customizing]) #forward-button[disabled] {
+    display: none !important;
+    transition: opacity 0.2s ease !important;
+  }
+
+  .search-one-offs {
+    display: none !important;
+    transition: opacity 0.3s ease !important;
+  }
+
+  .search-one-offs:has(.searchbar-engine-one-off-item[selected]) {
+    display: flex !important;
+    transition: opacity 0.3s ease !important;
+  }
+}
+
+/* CtrlTab panel styling */
+#ctrlTab-panel {
+  background: none !important;
+  transition: opacity 0.3s ease, transform 0.3s ease !important;
+}
+
+.ctrlTab-canvas {
+  background-color: transparent !important;
+  transition: transform 0.2s ease, opacity 0.2s ease !important;
+}
+
+.ctrlTab-canvas:hover {
+  transform: scale(1.02) !important;
+}
+
+.ctrlTab-label {
+  background-color: transparent !important;
+  transition: opacity 0.2s ease !important;
+}
+
+.ctrlTab-favicon-container image {
+  display: none !important;
+  transition: opacity 0.2s ease !important;
+}

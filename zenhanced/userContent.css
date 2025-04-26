@@ -1,0 +1,214 @@
+@-moz-document url-prefix("chrome:"),
+url("about:blank"),
+url("about:home"),
+url("about:newtab"),
+url("about:privatebrowsing") {
+
+  @media (prefers-color-scheme: dark) {
+    body {
+      background-color: #0d0c0c !important;
+      transition: background-color 0.4s ease-in-out !important;
+    }
+  }
+
+  @media (prefers-color-scheme: light) {
+    body {
+      background-color: #ffffff !important;
+      transition: background-color 0.4s ease-in-out !important;
+    }
+  }
+
+  .search-inner-wrapper,
+  .personalizeButtonWrapper {
+    display: none !important;
+  }
+
+  .top-sites-list,
+  .top-site,
+  .top-sites-spacer,
+  .zen-start-page-container,
+  .zen-start-page-box,
+  .zen-start-page-grid,
+  .zen-shortcuts,
+  .zen-shortcut-container,
+  .zen-tiles,
+  .tile-container,
+  .extension-shortcuts,
+  .quick-access,
+  [class*="tile"],
+  [class*="grid"],
+  [class*="shortcut"],
+  [class*="quick-access"],
+  [class*="extension"],
+  div[style*="border: 1px dotted"],
+  div[style*="border:1px dotted"],
+  div[style*="border-style: dotted"],
+  div[style*="border-style:dotted"] {
+    display: none !important;
+  }
+
+  .logo-and-wordmark {
+    margin-bottom: 0 !important;
+    height: 50vh;
+    transition: opacity 0.4s ease, transform 0.4s ease !important;
+  }
+  
+  .logo-and-wordmark:hover {
+    opacity: 0.9 !important;
+    transform: scale(1.02) !important;
+  }
+}
+
+@-moz-document url(about:home), url(about:newtab), url(about:blank) {
+
+  body {
+    width: 100%;
+    height: 100vh;
+    position: relative !important;
+    overflow: hidden !important;
+    transition: background-color 0.4s ease !important;
+  }
+
+  body::before {
+    content: "";
+    position: absolute;
+    height: 130vh;
+    width: auto;
+    aspect-ratio: 1/1 !important;
+    transform: translate(-50%, -50%);
+    top: 100%;
+    left: 100%;
+    background-color: rgba(255, 255, 255, 0.05);
+    mask-image: url('data:image/svg+xml,<%3Fxml version="1.0" encoding="utf-8"%3F><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 32 32" style="enable-background:new 0 0 32 32;" xml:space="preserve"><style type="text/css">.st0{fill-rule:evenodd;clip-rule:evenodd;fill:%23ffffff; opacity:85%}</style><path class="st0" d="M16,22.2c3.4,0,6.2-2.8,6.2-6.2c0-3.4-2.8-6.2-6.2-6.2c-3.4,0-6.2,2.8-6.2,6.2C9.8,19.4,12.6,22.2,16,22.2z M20.9,16c0,2.7-2.2,4.9-4.9,4.9s-4.9-2.2-4.9-4.9s2.2-4.9,4.9-4.9S20.9,13.3,20.9,16z"/><path class="st0" d="M26.7,16c0,5.9-4.8,10.7-10.7,10.7S5.3,21.9,5.3,16S10.1,5.3,16,5.3S26.7,10.1,26.7,16z M16,24.6c4.8,0,8.6-3.9,8.6-8.6S20.8,7.4,16,7.4S7.4,11.2,7.4,16S11.2,24.6,16,24.6z"/><path class="st0" d="M32,16c0,8.8-7.2,16-16,16S0,24.8,0,16S7.2,0,16,0S32,7.2,32,16z M16,29.1c7.3,0,13.1-5.9,13.1-13.1S23.3,2.9,16,2.9S2.9,8.7,2.9,16S8.7,29.1,16,29.1z"/></svg>');
+    mask-repeat: no-repeat;
+    mask-position: center;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    opacity: 85% !important;
+    transition: opacity 0.5s ease, transform 0.5s ease !important;
+  }
+
+  body:hover::before {
+    opacity: 85% !important;
+    transform: translate(-50%, -50%) scale(1.02) !important;
+  }
+
+  .search-wrapper {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50% !important;
+    left: 50% !important;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, opacity 0.3s ease !important;
+  }
+
+  .search-wrapper:hover {
+    transform: translate(-50%, -50%) scale(1.01) !important;
+  }
+
+  .search-handoff-button {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-evenly;
+    background-color: transparent !important;
+    backdrop-filter: blur(20px) !important;
+    border-radius: 3px !important;
+    transition: box-shadow 0.3s ease, backdrop-filter 0.3s ease, transform 0.2s ease !important;
+  }
+
+  .search-handoff-button:hover {
+    backdrop-filter: blur(25px) !important;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1) !important;
+  }
+
+  .search-inner-wrapper {
+    background-color: transparent !important;
+    backdrop-filter: blur(10px) !important;
+    transition: backdrop-filter 0.3s ease, background-color 0.3s ease !important;
+  }
+
+  .search-wrapper .search-inner-wrapper {
+    border-radius: 3px !important;
+    transition: border-radius 0.2s ease !important;
+  }
+
+  .logo-and-wordmark {
+    margin-block-end: 25px !important;
+    transition: margin 0.3s ease, opacity 0.3s ease, transform 0.3s ease !important;
+  }
+  
+  .logo-and-wordmark:hover {
+    transform: scale(1.02) !important;
+    opacity: 0.9 !important;
+  }
+}
+
+@-moz-document url(about:privatebrowsing) {
+
+  body {
+    width: 100%;
+    height: 100vh;
+    position: relative !important;
+    overflow: hidden !important;
+    transition: background-color 0.4s ease !important;
+  }
+
+  body::before {
+    content: "";
+    position: absolute;
+    height: 130vh;
+    width: auto;
+    aspect-ratio: 1/1 !important;
+    transform: translate(-50%, -50%);
+    top: 100%;
+    left: 100%;
+    background-color: rgba(255, 255, 255, 0.55);
+    mask-image: url('data:image/svg+xml,<%3Fxml version="1.0" encoding="utf-8"%3F><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 32 32" style="enable-background:new 0 0 32 32;" xml:space="preserve"><style type="text/css">.st0{fill-rule:evenodd;clip-rule:evenodd;fill:%23ffffff; opacity:85%}</style><path class="st0" d="M16,22.2c3.4,0,6.2-2.8,6.2-6.2c0-3.4-2.8-6.2-6.2-6.2c-3.4,0-6.2,2.8-6.2,6.2C9.8,19.4,12.6,22.2,16,22.2z M20.9,16c0,2.7-2.2,4.9-4.9,4.9s-4.9-2.2-4.9-4.9s2.2-4.9,4.9-4.9S20.9,13.3,20.9,16z"/><path class="st0" d="M26.7,16c0,5.9-4.8,10.7-10.7,10.7S5.3,21.9,5.3,16S10.1,5.3,16,5.3S26.7,10.1,26.7,16z M16,24.6c4.8,0,8.6-3.9,8.6-8.6S20.8,7.4,16,7.4S7.4,11.2,7.4,16S11.2,24.6,16,24.6z"/><path class="st0" d="M32,16c0,8.8-7.2,16-16,16S0,24.8,0,16S7.2,0,16,0S32,7.2,32,16z M16,29.1c7.3,0,13.1-5.9,13.1-13.1S23.3,2.9,16,2.9S2.9,8.7,2.9,16S8.7,29.1,16,29.1z"/></svg>');
+    mask-repeat: no-repeat;
+    mask-position: center;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    opacity: 15% !important;
+    transition: opacity 0.5s ease, transform 0.5s ease !important;
+  }
+
+  body:hover::before {
+    opacity: 18% !important;
+    transform: translate(-50%, -50%) scale(1.02) !important;
+  }
+
+  .search-handoff-button {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-evenly;
+    background-color: transparent !important;
+    backdrop-filter: blur(20px) !important;
+    border-radius: 3px !important;
+    transition: box-shadow 0.3s ease, backdrop-filter 0.3s ease, transform 0.2s ease !important;
+  }
+
+  .search-handoff-button:hover {
+    backdrop-filter: blur(25px) !important;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1) !important;
+    transform: scale(1.01) !important;
+  }
+
+  .focused:not(.disabled) {
+    box-shadow:
+      0 0 0 1px #b069db,
+      0 0 0 4px rgba(109, 10, 225, 0.3) !important;
+    transition: box-shadow 0.2s ease-in-out !important;
+  }
+
+  .search-inner-wrapper {
+    background-color: transparent !important;
+    backdrop-filter: blur(10px) !important;
+    transition: backdrop-filter 0.3s ease, background-color 0.3s ease !important;
+  }
+}
+
+:root {
+  --newtab-background-color: transparent !important;
+  transition: all 0.3s ease !important;
+}
