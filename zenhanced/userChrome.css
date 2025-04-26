@@ -27,7 +27,7 @@
   transform: translateX(-50%) !important;
   position: fixed !important;
   border-radius: 3px !important;
-  transition: width 0.3s ease, opacity 0.3s ease !important;
+  transition: width 0.45s cubic-bezier(0.215, 0.61, 0.355, 1), opacity 0.45s cubic-bezier(0.215, 0.61, 0.355, 1) !important;
 }
 
 #urlbar:hover {
@@ -41,61 +41,63 @@
 #urlbar-input-container {
   text-align: center !important;
   justify-content: center !important;
-  transition: background-color 0.2s ease-in-out !important;
+  transition: background-color 0.35s cubic-bezier(0.25, 0.1, 0.25, 1) !important;
 }
 
 .urlbar-input-box {
   text-align: center !important;
-  transition: color 0.2s ease !important;
+  transition: color 0.35s cubic-bezier(0.25, 0.1, 0.25, 1) !important;
 }
 
 #urlbar-background {
   border: 1px solid #ffffff13 !important;
   border-radius: 3px !important;
   background-color: #161616 !important;
-  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease !important;
+  transition: background-color 0.45s cubic-bezier(0.215, 0.61, 0.355, 1), 
+              border-color 0.45s cubic-bezier(0.215, 0.61, 0.355, 1), 
+              box-shadow 0.45s cubic-bezier(0.215, 0.61, 0.355, 1) !important;
 }
 
 #urlbar[focused] > #urlbar-background {
   box-shadow: 0 0 0 2px rgba(58, 133, 255, 0.3) !important;
-  transition: box-shadow 0.2s ease-in-out !important;
+  transition: box-shadow 0.35s cubic-bezier(0.25, 0.1, 0.25, 1) !important;
 }
 
 #urlbar:not([focused]) > #urlbar-background {
   background: transparent !important;
-  transition: background 0.3s ease-out !important;
+  transition: background 0.45s cubic-bezier(0.215, 0.61, 0.355, 1) !important;
 }
 
 #identity-icon-box:not(:hover),
 #identity-permission-box:not(:hover) {
   background-color: transparent !important;
-  transition: background-color 0.2s ease-in-out !important;
+  transition: background-color 0.35s cubic-bezier(0.25, 0.1, 0.25, 1) !important;
 }
 
 #identity-icon-box:hover,
 #identity-permission-box:hover {
   background-color: rgba(128, 128, 128, 0.2) !important;
-  transition: background-color 0.2s ease-in-out !important;
+  transition: background-color 0.35s cubic-bezier(0.25, 0.1, 0.25, 1) !important;
 }
 
 /* Navigation and control elements */
 #back-button {
   padding-left: 8px !important;
-  transition: opacity 0.2s ease !important;
+  transition: opacity 0.35s cubic-bezier(0.25, 0.1, 0.25, 1) !important;
 }
 
 #userContext-label {
   color: var(--zen-primary-color) !important;
-  transition: color 0.2s ease !important;
+  transition: color 0.35s cubic-bezier(0.25, 0.1, 0.25, 1) !important;
 }
 
 #tracking-protection-icon-container {
   order: 3 !important;
-  transition: opacity 0.2s ease, transform 0.2s ease !important;
+  transition: opacity 0.35s cubic-bezier(0.25, 0.1, 0.25, 1) !important;
 }
 
 #tracking-protection-icon-container:hover {
-  transform: scale(1.05) !important;
+  opacity: 0.9 !important;
 }
 
 /* Sidebar elements */
@@ -117,30 +119,30 @@
 #zen-sidebar-top-buttons,
 #zen-sidebar-top-buttons-customization-target {
   margin: 0px !important;
-  transition: opacity 0.2s ease !important;
+  transition: opacity 0.35s cubic-bezier(0.25, 0.1, 0.25, 1) !important;
 }
 
 #downloads-button {
   order: 1 !important;
-  transition: transform 0.2s ease !important;
+  transition: opacity 0.35s cubic-bezier(0.25, 0.1, 0.25, 1) !important;
 }
 
 #downloads-button:hover {
-  transform: scale(1.05) !important;
+  opacity: 0.9 !important;
 }
 
 #zen-profile-button {
   order: 2 !important;
-  transition: transform 0.2s ease !important;
+  transition: opacity 0.35s cubic-bezier(0.25, 0.1, 0.25, 1) !important;
 }
 
 #zen-profile-button:hover {
-  transform: scale(1.05) !important;
+  opacity: 0.9 !important;
 }
 
 #zen-sidebar-bottom-buttons {
   margin-bottom: 4px !important;
-  transition: opacity 0.2s ease !important;
+  transition: opacity 0.35s cubic-bezier(0.25, 0.1, 0.25, 1) !important;
 }
 
 #Zen-sidebar-splitter {
@@ -149,7 +151,9 @@
   min-width: 0 !important;
   width: 1px !important;
   height: 0.1% !important;
-  transition: width 0.3s ease, height 0.3s ease, background-color 0.3s ease !important;
+  transition: width 0.45s cubic-bezier(0.215, 0.61, 0.355, 1), 
+              height 0.45s cubic-bezier(0.215, 0.61, 0.355, 1), 
+              background-color 0.45s cubic-bezier(0.215, 0.61, 0.355, 1) !important;
 }
 
 #navigator-toolbox:hover ~ #Zen-sidebar-splitter,
@@ -166,11 +170,14 @@
   background-image: none !important;
   border: 1px solid var(--zen-colors-border) !important;
   border-radius: 3px !important;
-  transition: border-color 0.2s ease, background-color 0.2s ease !important;
+  transition: border-color 1.2s cubic-bezier(0.16, 1, 0.3, 1), 
+              background-color 1.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
 .tabbrowser-tab .tab-background {
-  transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.3s ease !important;
+  transition: background-color 1.2s cubic-bezier(0.16, 1, 0.3, 1), 
+              border-color 1.2s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 1.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
 .tabbrowser-tab:hover .tab-background:not([selected]) {
@@ -179,27 +186,105 @@
 
 #tabbrowser-tabs .tabbrowser-tab:not([pinned]):is([visuallyselected]):not(:hover) .tab-close-button {
   display: none !important;
-  transition: opacity 0.2s ease !important;
+  transition: opacity 0.35s cubic-bezier(0.25, 0.1, 0.25, 1) !important;
 }
 
 .tabbrowser-tab .tab-close-button {
   opacity: 0;
-  transition: opacity 0.2s ease !important;
+  transition: opacity 0.35s cubic-bezier(0.25, 0.1, 0.25, 1) !important;
 }
 
 .tabbrowser-tab:hover .tab-close-button {
   opacity: 1;
 }
 
+#tabbrowser-tabpanels {
+  transition: opacity 1.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.browserContainer {
+  transition: opacity 1.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+#sidebar-box .sidebar-panel {
+  transition: opacity 1.5s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 1.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.tab-content {
+  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.tabbrowser-tab {
+  transition: background-color 1.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.tabbrowser-tab[selected] {
+  background-color: rgba(128, 128, 128, 0.15) !important;
+  transition: background-color 1.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+browser {
+  transition: opacity 1.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+#zen-sidebar-browser-tabs {
+  transition: opacity 1.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+#zen-sidebar-top-buttons-container {
+  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+:root {
+  --tab-transition-duration: 1.5s !important;
+}
+
+#browser {
+  transition: opacity 1.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+#appcontent {
+  transition: opacity 1.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+#TabsToolbar {
+  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+#tabbrowser-arrowscrollbox {
+  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.browserSidebarContainer {
+  transition: opacity 1.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.webextension-browser-action {
+  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.browserContainer.loading {
+  transition: opacity 1.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.browserContainer.findbar-container {
+  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.browserContainer.deck-selected {
+  transition: opacity 1.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
 /* Panel and status elements */
 #tabbrowser-tabpanels[zen-split-view="true"] .browserSidebarContainer.deck-selected {
   outline: var(--zen-colors-border) !important;
-  transition: outline 0.3s ease !important;
+  transition: outline 0.45s cubic-bezier(0.215, 0.61, 0.355, 1) !important;
 }
 
 #statuspanel {
   margin: 6px !important;
-  transition: opacity 0.3s ease !important;
+  transition: opacity 0.45s cubic-bezier(0.215, 0.61, 0.355, 1) !important;
 }
 
 #statuspanel-label {
@@ -208,13 +293,15 @@
   border-radius: 3px !important;
   border: 1.5px solid var(--zen-colors-border) !important;
   background: var(--zen-colors-tertiary) !important;
-  transition: background 0.3s ease, border-color 0.3s ease, opacity 0.3s ease !important;
+  transition: background 0.45s cubic-bezier(0.215, 0.61, 0.355, 1), 
+              border-color 0.45s cubic-bezier(0.215, 0.61, 0.355, 1), 
+              opacity 0.45s cubic-bezier(0.215, 0.61, 0.355, 1) !important;
 }
 
 /* Background and window styling */
 #navigator-toolbox {
   background-color: rgba(0, 0, 0, 0) !important;
-  transition: background-color 0.3s ease !important;
+  transition: background-color 0.45s cubic-bezier(0.215, 0.61, 0.355, 1) !important;
 }
 
 #main-window {
@@ -223,20 +310,20 @@
   appearance: none !important;
   background-image: none !important;
   --zen-main-browser-background: rgba(0, 0, 0, 0.5) !important;
-  transition: background-color 0.4s ease !important;
+  transition: background-color 0.55s cubic-bezier(0.19, 1, 0.22, 1) !important;
 }
 
 /* Media queries */
 @media (-moz-bool-pref: "zen.view.compact") {
   #tabbrowser-tabpanels {
     padding: 0 !important;
-    transition: padding 0.3s ease !important;
+    transition: padding 0.45s cubic-bezier(0.215, 0.61, 0.355, 1) !important;
   }
 
   #tabbrowser-tabpanels .browserSidebarContainer:not([zen-split="true"]) {
     --zen-webview-border-radius: 0 !important;
     --zen-element-separation: 0 !important;
-    transition: all 0.3s ease !important;
+    transition: all 0.45s cubic-bezier(0.215, 0.61, 0.355, 1) !important;
   }
 }
 
@@ -246,28 +333,29 @@
     #navigator-toolbox {
       margin: auto !important;
       height: 75vh !important;
-      transition: height 0.3s ease, margin 0.3s ease !important;
+      transition: height 0.45s cubic-bezier(0.215, 0.61, 0.355, 1), 
+                  margin 0.45s cubic-bezier(0.215, 0.61, 0.355, 1) !important;
     }
   }
 
   :root:not([customizing]) #back-button[disabled] {
     display: none !important;
-    transition: opacity 0.2s ease !important;
+    transition: opacity 0.35s cubic-bezier(0.25, 0.1, 0.25, 1) !important;
   }
 
   :root:not([customizing]) #forward-button[disabled] {
     display: none !important;
-    transition: opacity 0.2s ease !important;
+    transition: opacity 0.35s cubic-bezier(0.25, 0.1, 0.25, 1) !important;
   }
 
   .search-one-offs {
     display: none !important;
-    transition: opacity 0.3s ease !important;
+    transition: opacity 0.45s cubic-bezier(0.215, 0.61, 0.355, 1) !important;
   }
 
   .search-one-offs:has(.searchbar-engine-one-off-item[selected]) {
     display: flex !important;
-    transition: opacity 0.3s ease !important;
+    transition: opacity 0.45s cubic-bezier(0.215, 0.61, 0.355, 1) !important;
   }
 }
 
@@ -279,7 +367,8 @@
   box-shadow: none !important;
   border: none !important;
   padding: 8px !important;
-  transition: opacity 0.4s ease, transform 0.4s ease !important;
+  transition: opacity 0.55s cubic-bezier(0.19, 1, 0.22, 1), 
+              transform 0.55s cubic-bezier(0.19, 1, 0.22, 1) !important;
   transform-origin: center !important;
   -moz-window-dragging: no-drag !important;
 }
@@ -297,18 +386,18 @@
 .ctrlTab-canvas {
   background-color: none !important;
   border-radius: 3px !important;
-  transition: transform 0.3s ease, opacity 0.3s ease !important;
+  transition: opacity 0.45s cubic-bezier(0.215, 0.61, 0.355, 1) !important;
   filter: none !important;
 }
 
 .ctrlTab-canvas[selected="true"] {
-  transform: scale(1.05) !important;
+  opacity: 1 !important;
   box-shadow: none !important;
   background-color: none !important;
 }
 
 .ctrlTab-canvas:hover {
-  transform: scale(1.02) !important;
+  opacity: 0.9 !important;
 }
 
 .ctrlTab-label {
@@ -317,7 +406,7 @@
   padding: 2px 6px !important;
   margin-top: 3px !important;
   font-weight: 400 !important;
-  transition: opacity 0.3s ease !important;
+  transition: opacity 0.45s cubic-bezier(0.215, 0.61, 0.355, 1) !important;
 }
 
 .ctrlTab-preview {
@@ -376,23 +465,23 @@ button,
 .urlbar-icon,
 .panel-subview-body .subview-subheader {
   cursor: var(--cursor-pointer) !important;
-  transition: transform 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+  transition: background-color 0.35s cubic-bezier(0.25, 0.1, 0.25, 1) !important;
 }
 
 button:hover,
 .button:hover,
 .toolbarbutton-1:hover,
 .subviewbutton:hover {
-  transform: scale(1.08) !important;
-  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+  background-color: rgba(128, 128, 128, 0.2) !important;
+  transition: background-color 0.35s cubic-bezier(0.25, 0.1, 0.25, 1) !important;
 }
 
 button:active,
 .button:active,
 .toolbarbutton-1:active,
 .subviewbutton:active {
-  transform: scale(0.92) !important;
-  transition: transform 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+  background-color: rgba(128, 128, 128, 0.3) !important;
+  transition: background-color 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
 }
 
 input[type="text"],
@@ -404,23 +493,8 @@ textarea,
   cursor: var(--cursor-text) !important;
 }
 
-.tabbrowser-tab {
-  transition: transform 0.2s ease-out !important;
-}
-
 .tabbrowser-tab:hover {
-  transform: translateY(-1px) !important;
-}
-
-.tabbrowser-tab[selected] {
-  animation: tab-select-pulse 0.8s cubic-bezier(0.22, 0.61, 0.36, 1) !important;
-}
-
-@keyframes tab-select-pulse {
-  0% { box-shadow: 0 0 0 0 rgba(128, 128, 128, 0.4); }
-  30% { box-shadow: 0 0 0 8px rgba(128, 128, 128, 0.3); }
-  70% { box-shadow: 0 0 0 12px rgba(128, 128, 128, 0.1); }
-  100% { box-shadow: 0 0 0 0 rgba(128, 128, 128, 0); }
+  background-color: rgba(128, 128, 128, 0.1) !important;
 }
 
 .toolbarbutton-1:hover,
@@ -428,34 +502,39 @@ button:hover,
 .button:hover,
 .subviewbutton:hover {
   box-shadow: 0 0 8px 2px rgba(128, 128, 128, 0.2) !important;
-  transition: box-shadow 0.3s ease-in-out, transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+  transition: box-shadow 0.45s cubic-bezier(0.215, 0.61, 0.355, 1), 
+              background-color 0.35s cubic-bezier(0.25, 0.1, 0.25, 1) !important;
 }
 
 /* Tab animations */
 .tab-background {
-  transition: background-color 0.4s ease, box-shadow 0.4s ease, background 0.5s ease !important;
+  transition: background-color 0.45s cubic-bezier(0.215, 0.61, 0.355, 1), 
+              box-shadow 0.45s cubic-bezier(0.215, 0.61, 0.355, 1), 
+              background 0.45s cubic-bezier(0.215, 0.61, 0.355, 1) !important;
 }
 
 .tab-group-label-container {
-  transition: background-color 0.4s ease, box-shadow 0.4s ease, background 0.5s ease !important;
+  transition: background-color 0.45s cubic-bezier(0.215, 0.61, 0.355, 1), 
+              box-shadow 0.45s cubic-bezier(0.215, 0.61, 0.355, 1), 
+              background 0.45s cubic-bezier(0.215, 0.61, 0.355, 1) !important;
 }
 
 /* Toolbar button animations */
 .toolbarbutton-1 {
   &:hover > :is(.toolbarbutton-icon, .toolbarbutton-text, .toolbarbutton-badge-stack) {
-    transition: background-color 0.3s ease-in-out, 
-                outline-color 0.3s ease-in-out !important; 
+    transition: background-color 0.35s cubic-bezier(0.25, 0.1, 0.25, 1), 
+                outline-color 0.35s cubic-bezier(0.25, 0.1, 0.25, 1) !important; 
   }
   
   > :is(.toolbarbutton-icon, .toolbarbutton-text, .toolbarbutton-badge-stack) {
-    transition: background-color 0.3s ease-in-out, 
-                outline-color 0.3s ease-in-out !important;
+    transition: background-color 0.35s cubic-bezier(0.25, 0.1, 0.25, 1), 
+                outline-color 0.35s cubic-bezier(0.25, 0.1, 0.25, 1) !important;
   }
 }
 
 .identity-box-button {
-  transition: background-color 0.3s ease-in-out, 
-              outline-color 1.3s ease-in-out !important;
+  transition: background-color 0.35s cubic-bezier(0.25, 0.1, 0.25, 1), 
+              outline-color 0.45s cubic-bezier(0.215, 0.61, 0.355, 1) !important;
 }
 
 /* URL bar controls animations */
@@ -470,50 +549,50 @@ button:hover,
 #page-action-buttons, 
 #urlbar-go-button, 
 #urlbar-revert-button-container {
-  transition: background-color 0.3s ease-in-out, 
-              outline-color 0.3s ease-in-out !important;
+  transition: background-color 0.35s cubic-bezier(0.25, 0.1, 0.25, 1), 
+              outline-color 0.35s cubic-bezier(0.25, 0.1, 0.25, 1) !important;
 }
 
 /* Tab function icons animations */
 .close-icon {
-  transition: background-color 0.3s ease-in-out, transform 0.2s ease !important;
+  transition: background-color 0.35s cubic-bezier(0.25, 0.1, 0.25, 1) !important;
 }
 
 .close-icon:hover {
-  transform: scale(1.05) !important;
+  background-color: rgba(128, 128, 128, 0.2) !important;
 }
 
 .tab-reset-button {
-  transition: background-color 0.3s ease-in-out, transform 0.2s ease !important;
+  transition: background-color 0.35s cubic-bezier(0.25, 0.1, 0.25, 1) !important;
 }
 
 .tab-reset-button:hover {
-  transform: scale(1.05) !important;
+  background-color: rgba(128, 128, 128, 0.2) !important;
 }
 
 #tabs-newtab-button {
-  transition: background-color 0.3s ease-in-out, transform 0.2s ease !important;
+  transition: background-color 0.35s cubic-bezier(0.25, 0.1, 0.25, 1) !important;
 }
 
 #tabs-newtab-button:hover {
-  transform: scale(1.05) !important;
+  background-color: rgba(128, 128, 128, 0.2) !important;
 }
 
 /* Other UI element animations */
 .subviewbutton {
-  transition: background-color 0.3s ease-in-out, transform 0.15s ease-out !important;
+  transition: background-color 0.35s cubic-bezier(0.25, 0.1, 0.25, 1) !important;
 }
 
 .subviewbutton:hover {
-  transform: translateY(-1px) !important;
+  background-color: rgba(128, 128, 128, 0.2) !important;
 }
 
 .urlbarView-row-inner {
-  transition: background-color 0.3s ease-in-out, transform 0.2s ease !important;
+  transition: background-color 0.35s cubic-bezier(0.25, 0.1, 0.25, 1) !important;
 }
 
 .urlbarView-row-inner:hover {
-  transform: translateX(2px) !important;
+  background-color: rgba(128, 128, 128, 0.2) !important;
 }
 
 /* Improved scrollbar styling */
@@ -558,7 +637,7 @@ button:hover,
   border-radius: 3px !important;
   border: 3px solid transparent !important;
   background-clip: content-box !important;
-  transition: background-color 0.3s ease !important;
+  transition: background-color 0.45s cubic-bezier(0.215, 0.61, 0.355, 1) !important;
 }
 
 ::-webkit-scrollbar-thumb:hover {
