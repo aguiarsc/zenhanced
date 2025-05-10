@@ -6,10 +6,6 @@
 
 **A minimalist Firefox theme with CLI aesthetics for the ultimate Zen browsing experience**
 
-[![Stars](https://img.shields.io/github/stars/aguiarsc/zenhanced?style=for-the-badge&color=565656&labelColor=0d0d0d)]()
-[![Version](https://img.shields.io/badge/VERSION-1.0.0-565656?style=for-the-badge&labelColor=0d0d0d)]()
-[![Firefox](https://img.shields.io/badge/FIREFOX-COMPATIBLE-565656?style=for-the-badge&labelColor=0d0d0d)]()
-
 </div>
 
 ---
