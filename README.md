@@ -2,7 +2,7 @@
 
 # 「 ✨ Zenhanced ✨ 」
 
-<img src="https://github.com/user-attachments/assets/39ed2a93-1bf8-423c-8ea1-83499832247a" width="800">
+<img src="https://github.com/user-attachments/assets/e4a95783-e2df-4e0e-8562-77a37609a1c0" width="800">
 
 **A minimalist Firefox theme with CLI aesthetics for the ultimate Zen browsing experience**
 
