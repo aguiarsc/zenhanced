@@ -1,98 +1,91 @@
-@-moz-document url-prefix("chrome:"),
-url("about:blank"),
-url("about:home"),
-url("about:newtab"),
-url("about:privatebrowsing") {
+/**
+ * ✨ Zenhanced - userContent.css ✨
+ * 
+ * A minimalist Zen Browser CSS customization for website content styling.
+ * This file controls the appearance of web content, new tabs, and browser pages.
+ * 
+ * Preferences:
+ * - Dark theme with consistent styling
+ * - Clean, minimal new tab page
+ * - Subtle animations and transitions
+ * - Consistent 3px border radius
+ * 
+ * Structure:
+ * 1. Global Variables & Settings
+ * 2. New Tab Page Styling
+ * 3. Internal Pages Styling
+ * 4. Search & Input Elements
+ * 5. Special Page Overrides
+ * 6. Dark Mode Enhancements
+ * 7. Background Effects
+ */
 
-  @media (prefers-color-scheme: dark) {
-    body {
-      background-color: #0d0c0c !important;
-      transition: background-color 0.4s ease-in-out !important;
-    }
-  }
+/* ============================================================================================== */
+/*                                 1. GLOBAL VARIABLES & SETTINGS                                 */
+/* ============================================================================================== */
 
-  @media (prefers-color-scheme: light) {
-    body {
-      background-color: #ffffff !important;
-      transition: background-color 0.4s ease-in-out !important;
-    }
-  }
-
-  .search-inner-wrapper,
-  .personalizeButtonWrapper {
-    display: none !important;
-  }
-
-  .top-sites-list,
-  .top-site,
-  .top-sites-spacer,
-  .zen-start-page-container,
-  .zen-start-page-box,
-  .zen-start-page-grid,
-  .zen-shortcuts,
-  .zen-shortcut-container,
-  .zen-tiles,
-  .tile-container,
-  .extension-shortcuts,
-  .quick-access,
-  [class*="tile"],
-  [class*="grid"],
-  [class*="shortcut"],
-  [class*="quick-access"],
-  [class*="extension"],
-  div[style*="border: 1px dotted"],
-  div[style*="border:1px dotted"],
-  div[style*="border-style: dotted"],
-  div[style*="border-style:dotted"] {
-    display: none !important;
-  }
-
-  .logo-and-wordmark {
-    margin-bottom: 0 !important;
-    height: 50vh;
-    transition: opacity 0.4s ease, transform 0.4s ease !important;
-  }
-  
-  .logo-and-wordmark:hover {
-    opacity: 0.9 !important;
-    transform: scale(1.02) !important;
+@-moz-document url-prefix("about:") {
+  :root {
+    /* Dark theme colors */
+    --zen-bg-color: #0d0d0d;
+    --zen-text-color: rgba(220, 220, 220, 0.85);
+    --zen-accent-color: rgba(160, 160, 160, 0.55);
+    --zen-accent-hover: rgba(220, 220, 220, 0.75);
+    --zen-highlight: rgba(160, 160, 160, 0.3);
+    
+    /* Layout measurements */
+    --zen-border-radius: 3px;
+    --zen-section-margin: 8px;
+    
+    /* Animation timing functions */
+    --zen-transition-fast: 0.3s ease;
+    --zen-transition-medium: 0.45s cubic-bezier(0.215, 0.61, 0.355, 1);
+    --zen-transition-slow: 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    
+    /* Default typography */
+    --zen-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --zen-mono-font: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, "Liberation Mono", monospace;
   }
 }
 
-@-moz-document url(about:home), url(about:newtab), url(about:blank) {
+/* ============================================================================================== */
+/*                                    2. NEW TAB PAGE STYLING                                     */
+/* ============================================================================================== */
 
+@-moz-document url("about:newtab"), url("about:home"), url("about:blank") {
+  /* Set basic layout for new tab page */
   body {
     width: 100%;
     height: 100vh;
     position: relative !important;
     overflow: hidden !important;
-    transition: background-color 0.4s ease !important;
+    background-color: var(--zen-bg-color) !important;
+    color: var(--zen-text-color) !important;
+    transition: background-color var(--zen-transition-medium) !important;
   }
-
+  
+  /* Static SVG background - matches original exactly */
   body::before {
     content: "";
     position: absolute;
-    height: 130vh;
-    width: auto;
-    aspect-ratio: 1/1 !important;
+    height: 150vh;
+    width: 150vh;
+    opacity: 0.7 !important;
     transform: translate(-50%, -50%);
     top: 100%;
     left: 100%;
     background-color: rgba(255, 255, 255, 0.05);
-    mask-image: url('data:image/svg+xml,<%3Fxml version="1.0" encoding="utf-8"%3F><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 32 32" style="enable-background:new 0 0 32 32;" xml:space="preserve"><style type="text/css">.st0{fill-rule:evenodd;clip-rule:evenodd;fill:%23ffffff; opacity:85%}</style><path class="st0" d="M16,22.2c3.4,0,6.2-2.8,6.2-6.2c0-3.4-2.8-6.2-6.2-6.2c-3.4,0-6.2,2.8-6.2,6.2C9.8,19.4,12.6,22.2,16,22.2z M20.9,16c0,2.7-2.2,4.9-4.9,4.9s-4.9-2.2-4.9-4.9s2.2-4.9,4.9-4.9S20.9,13.3,20.9,16z"/><path class="st0" d="M26.7,16c0,5.9-4.8,10.7-10.7,10.7S5.3,21.9,5.3,16S10.1,5.3,16,5.3S26.7,10.1,26.7,16z M16,24.6c4.8,0,8.6-3.9,8.6-8.6S20.8,7.4,16,7.4S7.4,11.2,7.4,16S11.2,24.6,16,24.6z"/><path class="st0" d="M32,16c0,8.8-7.2,16-16,16S0,24.8,0,16S7.2,0,16,0S32,7.2,32,16z M16,29.1c7.3,0,13.1-5.9,13.1-13.1S23.3,2.9,16,2.9S2.9,8.7,2.9,16S8.7,29.1,16,29.1z"/></svg>');
+    mask-image: url('data:image/svg+xml,<%3Fxml version="1.0" encoding="utf-8"%3F><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 32 32" style="enable-background:new 0 0 32 32;" xml:space="preserve"><style type="text/css">.st0{fill-rule:evenodd;clip-rule:evenodd;fill:%23ffffff;}</style><path class="st0" d="M16,22.2c3.4,0,6.2-2.8,6.2-6.2c0-3.4-2.8-6.2-6.2-6.2c-3.4,0-6.2,2.8-6.2,6.2C9.8,19.4,12.6,22.2,16,22.2z M20.9,16c0,2.7-2.2,4.9-4.9,4.9s-4.9-2.2-4.9-4.9s2.2-4.9,4.9-4.9S20.9,13.3,20.9,16z"/><path class="st0" d="M26.7,16c0,5.9-4.8,10.7-10.7,10.7S5.3,21.9,5.3,16S10.1,5.3,16,5.3S26.7,10.1,26.7,16z M16,24.6c4.8,0,8.6-3.9,8.6-8.6S20.8,7.4,16,7.4S7.4,11.2,7.4,16S11.2,24.6,16,24.6z"/><path class="st0" d="M32,16c0,8.8-7.2,16-16,16S0,24.8,0,16S7.2,0,16,0S32,7.2,32,16z M16,29.1c7.3,0,13.1-5.9,13.1-13.1S23.3,2.9,16,2.9S2.9,8.7,2.9,16S8.7,29.1,16,29.1z"/></svg>');
     mask-repeat: no-repeat;
     mask-position: center;
     -webkit-mask-repeat: no-repeat;
     -webkit-mask-position: center;
-    opacity: 85% !important;
-    transition: opacity 0.5s ease, transform 0.5s ease !important;
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.1));
+    z-index: -999;
+    pointer-events: none;
   }
-
-  body:hover::before {
-    opacity: 85% !important;
-    transform: translate(-50%, -50%) scale(1.02) !important;
-  }
-
+  
+  /* Search wrapper positioning - centered on page */
   .search-wrapper {
     position: absolute;
     transform: translate(-50%, -50%);
@@ -100,92 +93,36 @@ url("about:privatebrowsing") {
     left: 50% !important;
     display: flex;
     flex-direction: column;
-    transition: transform 0.3s ease, opacity 0.3s ease !important;
+    transition: transform var(--zen-transition-fast), opacity var(--zen-transition-fast) !important;
   }
-
+  
   .search-wrapper:hover {
     transform: translate(-50%, -50%) scale(1.01) !important;
   }
 
+  /* Hide logo and search bar since we already have the URL bar */
+  .logo-and-wordmark,
+  .search-wrapper,
+  .search-handoff-button,
+  .personalize-button {
+    display: none !important;
+  }
+
+  /* Search styling */
   .search-handoff-button {
     display: flex !important;
     align-items: center !important;
     justify-content: space-evenly;
     background-color: transparent !important;
     backdrop-filter: blur(20px) !important;
-    border-radius: 3px !important;
-    transition: box-shadow 0.3s ease, backdrop-filter 0.3s ease, transform 0.2s ease !important;
-  }
-
-  .search-handoff-button:hover {
-    backdrop-filter: blur(25px) !important;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1) !important;
-  }
-
-  .search-inner-wrapper {
-    background-color: transparent !important;
-    backdrop-filter: blur(10px) !important;
-    transition: backdrop-filter 0.3s ease, background-color 0.3s ease !important;
-  }
-
-  .search-wrapper .search-inner-wrapper {
-    border-radius: 3px !important;
-    transition: border-radius 0.2s ease !important;
-  }
-
-  .logo-and-wordmark {
-    margin-block-end: 25px !important;
-    transition: margin 0.3s ease, opacity 0.3s ease, transform 0.3s ease !important;
-  }
-  
-  .logo-and-wordmark:hover {
-    transform: scale(1.02) !important;
-    opacity: 0.9 !important;
-  }
-}
-
-@-moz-document url(about:privatebrowsing) {
-
-  body {
-    width: 100%;
-    height: 100vh;
-    position: relative !important;
-    overflow: hidden !important;
-    transition: background-color 0.4s ease !important;
-  }
-
-  body::before {
-    content: "";
-    position: absolute;
-    height: 130vh;
-    width: auto;
-    aspect-ratio: 1/1 !important;
-    transform: translate(-50%, -50%);
-    top: 100%;
-    left: 100%;
-    background-color: rgba(255, 255, 255, 0.55);
-    mask-image: url('data:image/svg+xml,<%3Fxml version="1.0" encoding="utf-8"%3F><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 32 32" style="enable-background:new 0 0 32 32;" xml:space="preserve"><style type="text/css">.st0{fill-rule:evenodd;clip-rule:evenodd;fill:%23ffffff; opacity:85%}</style><path class="st0" d="M16,22.2c3.4,0,6.2-2.8,6.2-6.2c0-3.4-2.8-6.2-6.2-6.2c-3.4,0-6.2,2.8-6.2,6.2C9.8,19.4,12.6,22.2,16,22.2z M20.9,16c0,2.7-2.2,4.9-4.9,4.9s-4.9-2.2-4.9-4.9s2.2-4.9,4.9-4.9S20.9,13.3,20.9,16z"/><path class="st0" d="M26.7,16c0,5.9-4.8,10.7-10.7,10.7S5.3,21.9,5.3,16S10.1,5.3,16,5.3S26.7,10.1,26.7,16z M16,24.6c4.8,0,8.6-3.9,8.6-8.6S20.8,7.4,16,7.4S7.4,11.2,7.4,16S11.2,24.6,16,24.6z"/><path class="st0" d="M32,16c0,8.8-7.2,16-16,16S0,24.8,0,16S7.2,0,16,0S32,7.2,32,16z M16,29.1c7.3,0,13.1-5.9,13.1-13.1S23.3,2.9,16,2.9S2.9,8.7,2.9,16S8.7,29.1,16,29.1z"/></svg>');
-    mask-repeat: no-repeat;
-    mask-position: center;
-    -webkit-mask-repeat: no-repeat;
-    -webkit-mask-position: center;
-    opacity: 15% !important;
-    transition: opacity 0.5s ease, transform 0.5s ease !important;
-  }
-
-  body:hover::before {
-    opacity: 18% !important;
-    transform: translate(-50%, -50%) scale(1.02) !important;
-  }
-
-  .search-handoff-button {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: space-evenly;
-    background-color: transparent !important;
-    backdrop-filter: blur(20px) !important;
-    border-radius: 3px !important;
-    transition: box-shadow 0.3s ease, backdrop-filter 0.3s ease, transform 0.2s ease !important;
+    border-radius: var(--zen-border-radius) !important;
+    transition: box-shadow var(--zen-transition-fast), 
+                backdrop-filter var(--zen-transition-fast), 
+                transform 0.2s ease !important;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1) !important;
+    padding: 8px 16px !important;
+    border: none !important;
+    min-width: 450px !important;
   }
 
   .search-handoff-button:hover {
@@ -196,19 +133,190 @@ url("about:privatebrowsing") {
 
   .focused:not(.disabled) {
     box-shadow:
-      0 0 0 1px #b069db,
-      0 0 0 4px rgba(109, 10, 225, 0.3) !important;
-    transition: box-shadow 0.2s ease-in-out !important;
+      0 0 0 1px var(--zen-accent-color),
+      0 0 0 4px var(--zen-highlight) !important;
+    transition: box-shadow var(--zen-transition-fast) !important;
   }
 
   .search-inner-wrapper {
     background-color: transparent !important;
     backdrop-filter: blur(10px) !important;
-    transition: backdrop-filter 0.3s ease, background-color 0.3s ease !important;
+    transition: backdrop-filter var(--zen-transition-fast), 
+                background-color var(--zen-transition-fast) !important;
   }
 }
 
-:root {
-  --newtab-background-color: transparent !important;
-  transition: all 0.3s ease !important;
+/* ============================================================================================== */
+/*                                    3. INTERNAL PAGES STYLING                                   */
+/* ============================================================================================== */
+
+/* Style all internal browser pages */
+@-moz-document url-prefix("about:") {
+  /* Base styles for internal pages */
+  :root {
+    --newtab-background-color: transparent !important;
+    transition: all var(--zen-transition-fast) !important;
+  }
+
+  body {
+    background-color: var(--zen-bg-color) !important;
+    color: var(--zen-text-color) !important;
+  }
+
+  /* Cards and containers */
+  .card {
+    background-color: rgba(30, 30, 30, 0.7) !important;
+    border-radius: var(--zen-border-radius) !important;
+    border: 1px solid var(--zen-accent-color) !important;
+    transition: transform var(--zen-transition-fast),
+                box-shadow var(--zen-transition-fast) !important;
+  }
+
+  .card:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3) !important;
+  }
+}
+
+/* ============================================================================================== */
+/*                                   4. SEARCH & INPUT ELEMENTS                                   */
+/* ============================================================================================== */
+
+/* Style search inputs and text fields across browser pages */
+@-moz-document url-prefix("about:") {
+  /* Input fields */
+  input[type="text"],
+  input[type="search"],
+  input[type="url"],
+  input[type="password"],
+  textarea {
+    background-color: rgba(30, 30, 30, 0.7) !important;
+    color: var(--zen-text-color) !important;
+    border: 1px solid var(--zen-accent-color) !important;
+    border-radius: var(--zen-border-radius) !important;
+    transition: border-color var(--zen-transition-fast),
+                box-shadow var(--zen-transition-fast) !important;
+  }
+
+  input:focus,
+  textarea:focus {
+    border-color: var(--zen-accent-hover) !important;
+    box-shadow: 0 0 0 2px var(--zen-highlight) !important;
+    outline: none !important;
+  }
+
+  /* Buttons */
+  button {
+    background-color: rgba(30, 30, 30, 0.7) !important;
+    color: var(--zen-text-color) !important;
+    border: 1px solid var(--zen-accent-color) !important;
+    border-radius: var(--zen-border-radius) !important;
+    transition: background-color var(--zen-transition-fast),
+                border-color var(--zen-transition-fast) !important;
+  }
+
+  button:hover {
+    background-color: rgba(50, 50, 50, 0.7) !important;
+    border-color: var(--zen-accent-hover) !important;
+  }
+}
+
+/* ============================================================================================== */
+/*                                   5. SPECIAL PAGE OVERRIDES                                    */
+/* ============================================================================================== */
+
+/* Reader mode styling */
+@-moz-document url-prefix("about:reader") {
+  body {
+    background-color: var(--zen-bg-color) !important;
+    color: var(--zen-text-color) !important;
+  }
+
+  .container {
+    background-color: var(--zen-bg-color) !important;
+  }
+
+  .content {
+    color: var(--zen-text-color) !important;
+  }
+
+  /* Reader toolbar */
+  .toolbar {
+    background-color: rgba(30, 30, 30, 0.7) !important;
+    border-radius: var(--zen-border-radius) !important;
+    backdrop-filter: blur(10px) !important;
+  }
+
+  .toolbar button {
+    color: var(--zen-text-color) !important;
+  }
+
+  .toolbar button:hover {
+    background-color: rgba(50, 50, 50, 0.7) !important;
+  }
+}
+
+/* ============================================================================================== */
+/*                                   6. DARK MODE ENHANCEMENTS                                    */
+/* ============================================================================================== */
+
+/* Improve dark mode experience globally */
+@-moz-document url-prefix("about:") {
+  /* Enhance contrast for text elements */
+  h1, h2, h3, h4, h5, h6 {
+    color: rgba(240, 240, 240, 0.9) !important;
+  }
+
+  /* Soften harsh links */
+  a:not(:hover) {
+    color: rgba(160, 180, 255, 0.8) !important;
+  }
+
+  a:hover {
+    color: rgba(180, 200, 255, 0.9) !important;
+  }
+
+  /* Improve code blocks readability */
+  code, pre {
+    background-color: rgba(40, 40, 40, 0.7) !important;
+    border: 1px solid rgba(60, 60, 60, 0.5) !important;
+    border-radius: var(--zen-border-radius) !important;
+    font-family: var(--zen-mono-font) !important;
+  }
+}
+
+/* ============================================================================================== */
+/*                                    7. BACKGROUND EFFECTS                                       */
+/* ============================================================================================== */
+
+/* Add subtle background effects to break monotony */
+@-moz-document url("about:newtab"), url("about:home") {
+  /* Add subtle noise texture */
+  body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    opacity: 0.03;
+    z-index: -1;
+    background-image: url("data:image/png;base64,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");
+  }
+}
+
+/* ============================================================================================== */
+/*                                       FINAL FALLBACKS                                          */
+/* ============================================================================================== */
+
+/* Global fallbacks for any pages that need them */
+* {
+  scrollbar-width: 14px !important;
+  scrollbar-color: rgba(128, 128, 128, 0.15) transparent !important;
+}
+
+::selection {
+  background-color: var(--zen-highlight, rgba(160, 160, 160, 0.3)) !important;
+  color: rgba(240, 240, 240, 0.9) !important;
 }

@@ -1,4 +1,85 @@
-/* Hidden elements */
+/**
+ * ✨ Zenhanced - userChrome.css ✨
+ * 
+ * A minimalist Zen Browser CSS customization with CLI-style interface elements.
+ * This file controls the browser UI appearance and behavior.
+ * 
+ * Preferences:
+ * - Consistent 3px border radius throughout the UI
+ * - Gray hover effects (neutral colors)
+ * - Middle clicking and tab bar functionality preserved
+ * - Subtle animations and transitions throughout
+ * - CLI-style section borders with labels
+ * 
+ * Structure:
+ * 1. CSS Variables & Theme Settings
+ * 2. Hidden UI Elements
+ * 3. CLI-Style Section Formatting
+ * 4. Navigation & Controls
+ * 5. Main Content Area
+ * 6. Sidebar
+ * 7. Tab Styling
+ * 8. URL & Search Bar
+ * 9. Panel & Status Elements
+ * 10. Animation & Transitions
+ * 11. Scrollbar Styling
+ * 12. Media Queries & Responsive Design
+ * 13. Background & Window Styling
+ * 14. Consistency Fixes & Border Radius
+ * 15. Zen Browser Specific Elements
+ */
+
+/* ============================================================================================== */
+/*                                 1. CSS VARIABLES & THEME SETTINGS                              */
+/* ============================================================================================== */
+
+:root {
+  /* CLI-style interface colors */
+  --cli-border-color: rgba(160, 160, 160, 0.55);
+  --cli-border-hover-color: rgba(220, 220, 220, 0.75);
+  --cli-title-color: var(--cli-border-color);
+  --cli-title-hover-color: var(--cli-border-hover-color);
+  --cli-title-background: #0d0d0d; /* Match the actual darker background color */
+  
+  /* Layout measurements */
+  --cli-corner-radius: 3px;        /* Consistent border radius throughout UI */
+  --cli-border-width: 3px;         /* Consistent border width for sections */
+  --cli-section-margin: 4px;       /* Spacing between sections */
+  
+  /* Animation timing for consistency */
+  --transition-fast: 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+  --transition-medium: 0.45s cubic-bezier(0.215, 0.61, 0.355, 1);
+  --transition-slow: 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  
+  /* Tab transition duration */
+  --tab-transition-duration: 1.5s !important;
+  
+  /* Scrollbar styling */
+  scrollbar-width: auto !important;
+  scrollbar-color: rgba(128, 128, 128, 0.15) transparent !important;
+  
+  /* Cursor types for different elements */
+  --cursor-default: default;
+  --cursor-pointer: pointer;
+  --cursor-text: text;
+  
+  /* Zen Browser specific variables */
+  --zen-colors-border: rgba(160, 160, 160, 0.55);
+  --zen-colors-border-hover: rgba(220, 220, 220, 0.75);
+  --zen-colors-primary: rgba(128, 128, 128, 0.8);
+  --zen-colors-secondary: rgba(220, 220, 220, 0.85);
+  --zen-colors-tertiary: rgba(20, 20, 20, 0.7);
+  --zen-main-browser-background: rgba(0, 0, 0, 0.5);
+  --zen-primary-color: rgba(160, 160, 160, 0.8);
+  --zen-webview-border-radius: var(--cli-corner-radius);
+  --zen-element-separation: 4px;
+}
+
+/* ============================================================================================== */
+/*                                     2. HIDDEN UI ELEMENTS                                      */
+/* ============================================================================================== */
+
+/* Hide unnecessary browser UI elements for a cleaner interface */
 #titlebar-buttonbox-container,
 #zen-expand-sidebar-button,
 #zen-sidepanel-button,
@@ -11,149 +92,220 @@
 #tabbrowser-arrowscrollbox-periphery,
 #workspace-indicator,
 .workspace-icon,
-.workspace-label
-{
-  display: none !important;
-}
-
-.tab-icon-overlay {
-  display: none !important;
-}
-
-/* URL bar styling */
-#urlbar {
-  width: 40vw !important;
-  left: 50% !important;
-  transform: translateX(-50%) !important;
-  position: fixed !important;
-  border-radius: 3px !important;
-  transition: width 0.45s cubic-bezier(0.215, 0.61, 0.355, 1), opacity 0.45s cubic-bezier(0.215, 0.61, 0.355, 1) !important;
-}
-
-#urlbar:hover {
-  opacity: 1 !important;
-}
-
-#urlbar:not(:hover):not([focused]) {
-  opacity: 0.85 !important;
-}
-
-#urlbar-input-container {
-  text-align: center !important;
-  justify-content: center !important;
-  transition: background-color 0.35s cubic-bezier(0.25, 0.1, 0.25, 1) !important;
-}
-
-.urlbar-input-box {
-  text-align: center !important;
-  transition: color 0.35s cubic-bezier(0.25, 0.1, 0.25, 1) !important;
-}
-
-#urlbar-background {
-  border: 1px solid #ffffff13 !important;
-  border-radius: 3px !important;
-  background-color: #161616 !important;
-  transition: background-color 0.45s cubic-bezier(0.215, 0.61, 0.355, 1), 
-              border-color 0.45s cubic-bezier(0.215, 0.61, 0.355, 1), 
-              box-shadow 0.45s cubic-bezier(0.215, 0.61, 0.355, 1) !important;
-}
-
-#urlbar[focused] > #urlbar-background {
-  box-shadow: 0 0 0 2px rgba(58, 133, 255, 0.3) !important;
-  transition: box-shadow 0.35s cubic-bezier(0.25, 0.1, 0.25, 1) !important;
-}
-
-#urlbar:not([focused]) > #urlbar-background {
-  background: transparent !important;
-  transition: background 0.45s cubic-bezier(0.215, 0.61, 0.355, 1) !important;
-}
-
-#identity-icon-box:not(:hover),
-#identity-permission-box:not(:hover) {
-  background-color: transparent !important;
-  transition: background-color 0.35s cubic-bezier(0.25, 0.1, 0.25, 1) !important;
-}
-
-#identity-icon-box:hover,
-#identity-permission-box:hover {
-  background-color: rgba(128, 128, 128, 0.2) !important;
-  transition: background-color 0.35s cubic-bezier(0.25, 0.1, 0.25, 1) !important;
-}
-
-/* Navigation and control elements */
-#back-button {
-  padding-left: 8px !important;
-  transition: opacity 0.35s cubic-bezier(0.25, 0.1, 0.25, 1) !important;
-}
-
-#userContext-label {
-  color: var(--zen-primary-color) !important;
-  transition: color 0.35s cubic-bezier(0.25, 0.1, 0.25, 1) !important;
-}
-
-#tracking-protection-icon-container {
-  order: 3 !important;
-  transition: opacity 0.35s cubic-bezier(0.25, 0.1, 0.25, 1) !important;
-}
-
-#tracking-protection-icon-container:hover {
-  opacity: 0.9 !important;
-}
-
-/* Sidebar elements */
-#sidebar-box::before {
-  content: "";
-  display: block;
-  height: 40px;
-  width: 100%;
-}
-
-#zen-current-workspace-indicator {
-  display: none !important;
-}
-
+.workspace-label,
+#PersonalToolbar,
+#navigator-toolbox #PersonalToolbar,
+toolbar#bookmarks-toolbar,
+#nav-bar ~ #PersonalToolbar,
+.tab-icon-overlay,
+#zen-current-workspace-indicator,
 #zen-current-workspace-indicator-container {
   display: none !important;
 }
 
+/* ============================================================================================== */
+/*                                 3. CLI-STYLE SECTION FORMATTING                                */
+/* ============================================================================================== */
+
+/**
+ * Generic CLI-style section formatting that can be applied to any container.
+ * Uses a clean border with a floating label in the top left corner.
+ */
+.cli-section-title {
+  position: relative;
+  border: var(--cli-border-width) solid var(--cli-border-color) !important;
+  border-radius: var(--cli-corner-radius) !important;
+  padding-top: 8px !important;
+  margin-top: 12px !important;
+  transition: border-color var(--transition-fast) !important;
+}
+
+.cli-section-title:hover {
+  border-color: var(--cli-border-hover-color) !important;
+}
+
+.cli-section-title::before {
+  content: attr(data-title);
+  position: absolute;
+  top: -9px;
+  left: 10px;
+  background-color: var(--cli-title-background);
+  color: var(--cli-title-color);
+  padding: 0 8px;
+  font-size: 13px;
+  font-family: monospace;
+  font-weight: 500;
+  border-radius: 2px;
+  z-index: 1;
+  transition: color var(--transition-fast) !important;
+}
+
+.cli-section-title:hover::before {
+  color: var(--cli-title-hover-color);
+}
+
+/* ============================================================================================== */
+/*                                    4. NAVIGATION & CONTROLS                                    */
+/* ============================================================================================== */
+
+/**
+ * Navigation bar (URL bar container)
+ * Applies CLI-style border with label and hover effects
+ */
+#nav-bar {
+  position: relative !important;
+  border: var(--cli-border-width) solid var(--cli-border-color) !important;
+  border-radius: var(--cli-corner-radius) !important;
+  margin: 12px var(--cli-section-margin) var(--cli-section-margin) var(--cli-section-margin) !important;
+  padding-top: 4px !important;
+  padding-bottom: 4px !important;
+  padding-right: 8px !important;
+  transition: border-color var(--transition-medium) !important;
+  /* Ensure right-edge alignment matches main content */
+  width: calc(100% - (var(--cli-section-margin) * 2) - (var(--cli-border-width) * 2)) !important;
+}
+
+#nav-bar:hover {
+  border-color: var(--cli-border-hover-color) !important;
+}
+
+/* Navigation bar label */
+#nav-bar::before {
+  content: "navbar";
+  position: absolute;
+  top: -9px;
+  left: 10px;
+  background-color: var(--cli-title-background);
+  color: var(--cli-title-color);
+  padding: 0 8px;
+  font-size: 13px;
+  font-family: monospace;
+  font-weight: 500;
+  border-radius: 2px;
+  z-index: 100;
+  transition: color var(--transition-fast) !important;
+}
+
+#nav-bar:hover::before {
+  color: var(--cli-title-hover-color);
+}
+
+/* ============================================================================================== */
+/*                                      5. MAIN CONTENT AREA                                      */
+/* ============================================================================================== */
+
+/**
+ * Main browser content panel styling
+ * Applies CLI-style border with label and matches width/margins with navbar
+ */
+#tabbrowser-tabpanels {
+  transition: opacity var(--transition-slow), border-color var(--transition-fast) !important;
+  position: relative !important;
+  border: var(--cli-border-width) solid var(--cli-border-color) !important;
+  border-radius: var(--cli-corner-radius) !important;
+  margin: var(--cli-section-margin) !important;
+  margin-top: 12px !important;
+  margin-bottom: 0 !important;
+}
+
+/* Hover effect for main content panel */
+#tabbrowser-tabpanels:hover {
+  border-color: var(--cli-border-hover-color) !important;
+}
+
+/* Main content section label */
+#tabbrowser-tabpanels::before {
+  content: "main";
+  position: absolute;
+  top: -9px;
+  left: 10px;
+  background-color: var(--cli-title-background);
+  color: var(--cli-title-color);
+  padding: 0 8px;
+  font-size: 13px;
+  font-family: monospace;
+  font-weight: 500;
+  border-radius: 2px;
+  z-index: 100;
+  transition: color var(--transition-fast) !important;
+}
+
+#tabbrowser-tabpanels:hover::before {
+  color: var(--cli-title-hover-color);
+}
+
+/* Browser container animations */
+.browserContainer {
+  transition: opacity var(--transition-slow) !important;
+}
+
+/* ============================================================================================== */
+/*                                          6. SIDEBAR                                           */
+/* ============================================================================================== */
+
+/**
+ * Sidebar container styling
+ * Applies CLI-style border with label and matches height with main content
+ */
+#sidebar-box {
+  position: relative !important;
+  border: var(--cli-border-width) solid var(--cli-border-color) !important;
+  border-radius: var(--cli-corner-radius) !important;
+  margin-bottom: 0 !important;
+  margin-left: var(--cli-section-margin) !important;
+  margin-right: 0 !important;
+  transition: border-color var(--transition-fast) !important;
+  padding-top: var(--cli-section-margin) !important;
+}
+
+#sidebar-box:hover {
+  border-color: var(--cli-border-hover-color) !important;
+}
+
+/* Sidebar label */
+#sidebar-box::before {
+  content: "tabs";
+  position: absolute;
+  top: -9px;
+  left: 10px;
+  background-color: var(--cli-title-background);
+  color: var(--cli-title-color);
+  padding: 0 8px;
+  font-size: 13px;
+  font-family: monospace;
+  font-weight: 500;
+  border-radius: 2px;
+  z-index: 100;
+  transition: color var(--transition-fast) !important;
+}
+
+#sidebar-box:hover::before {
+  color: var(--cli-title-hover-color);
+}
+
+/* Sidebar panel animation */
+#sidebar-box .sidebar-panel {
+  transition: opacity var(--transition-slow),
+              transform var(--transition-slow) !important;
+}
+
+/* Zen-specific sidebar elements */
 #zen-sidebar-top-buttons,
 #zen-sidebar-top-buttons-customization-target {
   margin: 0px !important;
-  transition: opacity 0.35s cubic-bezier(0.25, 0.1, 0.25, 1) !important;
+  transition: opacity var(--transition-fast) !important;
 }
 
-#downloads-button {
-  order: 1 !important;
-  transition: opacity 0.35s cubic-bezier(0.25, 0.1, 0.25, 1) !important;
-}
-
-#downloads-button:hover {
-  opacity: 0.9 !important;
-}
-
-#zen-profile-button {
-  order: 2 !important;
-  transition: opacity 0.35s cubic-bezier(0.25, 0.1, 0.25, 1) !important;
-}
-
-#zen-profile-button:hover {
-  opacity: 0.9 !important;
-}
-
-#zen-sidebar-bottom-buttons {
-  margin-bottom: 4px !important;
-  transition: opacity 0.35s cubic-bezier(0.25, 0.1, 0.25, 1) !important;
-}
-
+/* Zen sidebar splitter styling */
 #Zen-sidebar-splitter {
   opacity: 1 !important;
   border: none !important;
   min-width: 0 !important;
   width: 1px !important;
   height: 0.1% !important;
-  transition: width 0.45s cubic-bezier(0.215, 0.61, 0.355, 1), 
-              height 0.45s cubic-bezier(0.215, 0.61, 0.355, 1), 
-              background-color 0.45s cubic-bezier(0.215, 0.61, 0.355, 1) !important;
+  transition: width var(--transition-medium), 
+              height var(--transition-medium), 
+              background-color var(--transition-medium) !important;
 }
 
 #navigator-toolbox:hover ~ #Zen-sidebar-splitter,
@@ -164,206 +316,298 @@
   background-color: rgba(128, 128, 128, 0.2) !important;
 }
 
-/* Tab styling */
+/* Button ordering */
+#downloads-button {
+  order: 1 !important;
+}
+
+#page-action-buttons > :not([hidden="true"]) {
+  order: 2 !important;
+}
+
+/* Split view styling */
+#tabbrowser-tabpanels[zen-split-view="true"] .browserSidebarContainer.deck-selected {
+  outline: var(--zen-colors-border) !important;
+  transition: outline var(--transition-medium) !important;
+}
+
+/* ============================================================================================== */
+/*                                         7. TAB STYLING                                         */
+/* ============================================================================================== */
+
+/**
+ * Tab styling for minimal, unobtrusive design
+ * Preserves native middle-click functionality for opening new tabs
+ */
+
+#TabsToolbar {
+  margin-right: var(--cli-border-width) !important;
+}
+
+#tabbrowser-tabs {
+  margin-right: calc(var(--cli-section-margin) * 1.5) !important;
+}
+
+.tabbrowser-tab {
+  transition: opacity var(--transition-medium) !important;
+}
+
+/* Tab background styling for selected and unselected states */
+.tabbrowser-tab .tab-background {
+  transition: background-color var(--transition-fast) !important;
+  border-radius: var(--cli-corner-radius) !important;
+}
+
 .tab-background:is([selected], [multiselected]) {
   background-color: transparent !important;
   background-image: none !important;
-  border: 1px solid var(--zen-colors-border) !important;
-  border-radius: 3px !important;
-  transition: border-color 1.2s cubic-bezier(0.16, 1, 0.3, 1), 
-              background-color 1.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  border: 1px solid var(--cli-border-color) !important;
+  border-radius: var(--cli-corner-radius) !important;
+  transition: border-color var(--transition-slow), 
+              background-color var(--transition-slow) !important;
 }
 
-.tabbrowser-tab .tab-background {
-  transition: background-color 1.2s cubic-bezier(0.16, 1, 0.3, 1), 
-              border-color 1.2s cubic-bezier(0.16, 1, 0.3, 1), 
-              box-shadow 1.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
-}
-
+/* Subtle hover effect on tabs */
 .tabbrowser-tab:hover .tab-background:not([selected]) {
   background-color: rgba(128, 128, 128, 0.1) !important;
 }
 
+/* Hide close button when not needed */
 #tabbrowser-tabs .tabbrowser-tab:not([pinned]):is([visuallyselected]):not(:hover) .tab-close-button {
   display: none !important;
-  transition: opacity 0.35s cubic-bezier(0.25, 0.1, 0.25, 1) !important;
+  transition: opacity var(--transition-fast) !important;
 }
 
+/* Tab close button fade in/out */
 .tabbrowser-tab .tab-close-button {
   opacity: 0;
-  transition: opacity 0.35s cubic-bezier(0.25, 0.1, 0.25, 1) !important;
+  transition: opacity var(--transition-fast) !important;
 }
 
 .tabbrowser-tab:hover .tab-close-button {
   opacity: 1;
 }
 
-#tabbrowser-tabpanels {
-  transition: opacity 1.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
-}
-
-.browserContainer {
-  transition: opacity 1.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
-}
-
-#sidebar-box .sidebar-panel {
-  transition: opacity 1.5s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 1.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
-}
-
-.tab-content {
-  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
-}
-
-.tabbrowser-tab {
-  transition: background-color 1.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
-}
-
-.tabbrowser-tab[selected] {
-  background-color: rgba(128, 128, 128, 0.15) !important;
-  transition: background-color 1.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
-}
-
-browser {
-  transition: opacity 1.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
-}
-
-#zen-sidebar-browser-tabs {
-  transition: opacity 1.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
-}
-
-#zen-sidebar-top-buttons-container {
-  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
-}
-
-:root {
-  --tab-transition-duration: 1.5s !important;
-}
-
-#browser {
-  transition: opacity 1.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
-}
-
-#appcontent {
-  transition: opacity 1.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
-}
-
+/* Simple border styling for pinned tabs */
 #TabsToolbar {
-  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  padding-left: var(--cli-section-margin) !important;
 }
 
-#tabbrowser-arrowscrollbox {
-  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+.tabbrowser-tab[pinned] {
+  margin-right: 8px !important;
 }
 
-.browserSidebarContainer {
-  transition: opacity 1.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
+.tabbrowser-tab[pinned] .tab-background {
+  background-color: transparent !important;
+  border: var(--cli-border-width) solid var(--cli-border-color) !important;
+  border-radius: var(--cli-corner-radius) !important;
 }
 
-.webextension-browser-action {
-  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+.tabbrowser-tab[pinned]:hover .tab-background {
+  border-color: var(--cli-border-hover-color) !important;
 }
 
-.browserContainer.loading {
-  transition: opacity 1.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
+/* ============================================================================================== */
+/*                                     8. URL & SEARCH BAR                                        */
+/* ============================================================================================== */
+
+/**
+ * URL bar styling for centered minimal look
+ * Fixed position centered in navbar with smooth transitions
+ */
+#urlbar {
+  width: 40vw !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  position: fixed !important;
+  border-radius: var(--cli-corner-radius) !important;
+  transition: width var(--transition-medium), opacity var(--transition-medium) !important;
 }
 
-.browserContainer.findbar-container {
-  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+/* Hover and focus effects for URL bar */
+#urlbar:hover {
+  opacity: 1 !important;
 }
 
-.browserContainer.deck-selected {
-  transition: opacity 1.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
+#urlbar:not(:hover):not([focused]) {
+  opacity: 0.85 !important;
 }
 
-/* Panel and status elements */
-#tabbrowser-tabpanels[zen-split-view="true"] .browserSidebarContainer.deck-selected {
-  outline: var(--zen-colors-border) !important;
-  transition: outline 0.45s cubic-bezier(0.215, 0.61, 0.355, 1) !important;
+/* Container for URL input */
+#urlbar-input-container {
+  text-align: center !important;
+  justify-content: center !important;
+  transition: background-color var(--transition-fast) !important;
 }
 
+.urlbar-input-box {
+  text-align: center !important;
+  transition: color var(--transition-fast) !important;
+}
+
+/* URL bar background container */
+#urlbar-background {
+  border: none !important;
+  border-radius: var(--cli-corner-radius) !important;
+  background-color: #0d0d0d !important;
+  transition: background-color var(--transition-medium) !important;
+}
+
+/* URL bar focus styling */
+#urlbar[focused] > #urlbar-background {
+  box-shadow: none !important;
+  background-color: #0d0d0d !important;
+  transition: background-color var(--transition-fast) !important;
+}
+
+/* Floating URL bar with full CLI styling - exactly matches other CLI elements */
+.urlbarView {
+  position: relative !important;
+  border: var(--cli-border-width) solid var(--cli-border-color) !important;
+  border-radius: var(--cli-corner-radius) !important;
+  background-color: #0d0d0d !important;
+  color: var(--cli-border-color) !important;
+  padding-top: 8px !important;
+  margin-top: 8px !important;
+  transition: border-color var(--transition-fast) !important;
+}
+
+.urlbarView::before {
+  content: "search";
+  position: absolute;
+  top: -9px;
+  left: 10px;
+  background-color: var(--cli-title-background);
+  color: var(--cli-title-color);
+  padding: 0 8px;
+  font-size: 13px;
+  font-family: monospace;
+  font-weight: 500;
+  border-radius: 2px;
+  z-index: 100;
+  transition: color var(--transition-fast) !important;
+}
+
+.urlbarView:hover {
+  border-color: var(--cli-border-hover-color) !important;
+}
+
+.urlbarView:hover::before {
+  color: var(--cli-title-hover-color);
+}
+
+/* URL bar not focused state */
+#urlbar:not([focused]) > #urlbar-background {
+  background: transparent !important;
+  transition: background var(--transition-medium) !important;
+}
+
+/* Identity box hover effects */
+#identity-icon-box:not(:hover),
+#identity-permission-box:not(:hover) {
+  background-color: transparent !important;
+  transition: background-color var(--transition-fast) !important;
+}
+
+#identity-icon-box:hover,
+#identity-permission-box:hover {
+  background-color: rgba(128, 128, 128, 0.2) !important;
+  transition: background-color var(--transition-fast) !important;
+}
+
+/* URL bar suggestion items */
+.urlbarView-row-inner {
+  transition: background-color var(--transition-fast) !important;
+  border-radius: var(--cli-corner-radius) !important;
+}
+
+.urlbarView-row-inner:hover {
+  background-color: rgba(128, 128, 128, 0.2) !important;
+}
+
+/* URL bar suggestion typography and selected state */
+.urlbarView-row {
+  border-radius: var(--cli-corner-radius) !important;
+  color: var(--cli-border-color) !important;
+}
+
+.urlbarView-row[selected] {
+  background-color: rgba(128, 128, 128, 0.15) !important;
+  color: var(--cli-border-hover-color) !important;
+}
+
+.urlbarView-row[selected] .urlbarView-row-inner {
+  background-color: transparent !important;
+}
+
+.urlbarView-title, .urlbarView-secondary {
+  color: var(--cli-border-color) !important;
+}
+
+.urlbarView-row[selected] .urlbarView-title, 
+.urlbarView-row[selected] .urlbarView-secondary {
+  color: var(--cli-border-hover-color) !important;
+}
+
+/* ============================================================================================== */
+/*                                    9. PANEL & STATUS ELEMENTS                                  */
+/* ============================================================================================== */
+
+/**
+ * Search panel and dropdown customization
+ * Keeps consistent with other dark theme elements
+ */
+/* Search panel is hidden but will be displayed when an engine is selected */
+.search-one-offs {
+  display: none !important;
+  transition: opacity var(--transition-medium) !important;
+  background-color: #0d0d0d !important;
+}
+
+.search-one-offs:has(.searchbar-engine-one-off-item[selected]) {
+  display: flex !important;
+  transition: opacity var(--transition-medium) !important;
+  background-color: #0d0d0d !important;
+}
+
+/* Search input styling */
+input[type="text"],
+input[type="search"],
+.searchbar-textbox {
+  background-color: #0d0d0d !important;
+  color: var(--cli-border-color) !important;
+  border-radius: var(--cli-corner-radius) !important;
+  border: none !important;
+}
+
+/* Selected text styling */
+::selection {
+  background-color: rgba(160, 160, 160, 0.3) !important;
+  color: var(--cli-border-hover-color) !important;
+}
+
+/* Status panel styling */
 #statuspanel {
   margin: 6px !important;
-  transition: opacity 0.45s cubic-bezier(0.215, 0.61, 0.355, 1) !important;
+  transition: opacity var(--transition-medium) !important;
 }
 
 #statuspanel-label {
   font-size: 12px !important;
   padding: 2px 10px !important;
-  border-radius: 3px !important;
-  border: 1.5px solid var(--zen-colors-border) !important;
-  background: var(--zen-colors-tertiary) !important;
-  transition: background 0.45s cubic-bezier(0.215, 0.61, 0.355, 1), 
-              border-color 0.45s cubic-bezier(0.215, 0.61, 0.355, 1), 
-              opacity 0.45s cubic-bezier(0.215, 0.61, 0.355, 1) !important;
-}
-
-/* Background and window styling */
-#navigator-toolbox {
-  background-color: rgba(0, 0, 0, 0) !important;
-  transition: background-color 0.45s cubic-bezier(0.215, 0.61, 0.355, 1) !important;
-}
-
-#main-window {
-  background-color: rgba(41, 47, 52, 0.2) !important;
-  -moz-appearance: none !important;
-  appearance: none !important;
-  background-image: none !important;
-  --zen-main-browser-background: rgba(0, 0, 0, 0.5) !important;
-  transition: background-color 0.55s cubic-bezier(0.19, 1, 0.22, 1) !important;
-}
-
-/* Media queries */
-@media (-moz-bool-pref: "zen.view.compact") {
-  #tabbrowser-tabpanels {
-    padding: 0 !important;
-    transition: padding 0.45s cubic-bezier(0.215, 0.61, 0.355, 1) !important;
-  }
-
-  #tabbrowser-tabpanels .browserSidebarContainer:not([zen-split="true"]) {
-    --zen-webview-border-radius: 0 !important;
-    --zen-element-separation: 0 !important;
-    transition: all 0.45s cubic-bezier(0.215, 0.61, 0.355, 1) !important;
-  }
-}
-
-/* Document rules */
-@-moz-document url-prefix("chrome:") {
-  @media (-moz-bool-pref: "zen.view.compact") and (-moz-bool-pref: "zen.view.compact.hide-tabbar") {
-    #navigator-toolbox {
-      margin: auto !important;
-      height: 75vh !important;
-      transition: height 0.45s cubic-bezier(0.215, 0.61, 0.355, 1), 
-                  margin 0.45s cubic-bezier(0.215, 0.61, 0.355, 1) !important;
-    }
-  }
-
-  :root:not([customizing]) #back-button[disabled] {
-    display: none !important;
-    transition: opacity 0.35s cubic-bezier(0.25, 0.1, 0.25, 1) !important;
-  }
-
-  :root:not([customizing]) #forward-button[disabled] {
-    display: none !important;
-    transition: opacity 0.35s cubic-bezier(0.25, 0.1, 0.25, 1) !important;
-  }
-
-  .search-one-offs {
-    display: none !important;
-    transition: opacity 0.45s cubic-bezier(0.215, 0.61, 0.355, 1) !important;
-  }
-
-  .search-one-offs:has(.searchbar-engine-one-off-item[selected]) {
-    display: flex !important;
-    transition: opacity 0.45s cubic-bezier(0.215, 0.61, 0.355, 1) !important;
-  }
+  border-radius: var(--cli-corner-radius) !important;
+  border: 1.5px solid var(--cli-border-color) !important;
+  background: var(--cli-title-background) !important;
+  transition: background var(--transition-medium), 
+              border-color var(--transition-medium), 
+              opacity var(--transition-medium) !important;
 }
 
 /* CtrlTab panel styling */
 #ctrlTab-panel {
   background: none !important;
   backdrop-filter: blur(5px) !important;
-  border-radius: 3px !important;
+  border-radius: var(--cli-corner-radius) !important;
   box-shadow: none !important;
   border: none !important;
   padding: 8px !important;
@@ -384,79 +628,40 @@ browser {
 }
 
 .ctrlTab-canvas {
-  background-color: none !important;
-  border-radius: 3px !important;
-  transition: opacity 0.45s cubic-bezier(0.215, 0.61, 0.355, 1) !important;
+  background-color: transparent !important;
+  border-radius: var(--cli-corner-radius) !important;
+  transition: opacity var(--transition-medium) !important;
   filter: none !important;
 }
 
 .ctrlTab-canvas[selected="true"] {
   opacity: 1 !important;
   box-shadow: none !important;
-  background-color: none !important;
+  background-color: transparent !important;
+  border: 1px solid var(--cli-border-hover-color) !important;
 }
 
-.ctrlTab-canvas:hover {
-  opacity: 0.9 !important;
+/* Popup panels styling */
+.panel-arrowcontent {
+  background-color: #0d0d0d !important;
+  border: 1px solid var(--cli-border-color) !important;
+  border-radius: var(--cli-corner-radius) !important;
 }
 
-.ctrlTab-label {
-  background-color: none !important;
-  color: white !important;
-  padding: 2px 6px !important;
-  margin-top: 3px !important;
-  font-weight: 400 !important;
-  transition: opacity 0.45s cubic-bezier(0.215, 0.61, 0.355, 1) !important;
-}
+/* ============================================================================================== */
+/*                                 10. ANIMATION & TRANSITIONS                                    */
+/* ============================================================================================== */
 
-.ctrlTab-preview {
-  background-color: none !important;
-}
-
-.ctrlTab-preview-inner {
-  background: none !important;
-}
-
-.ctrlTab-preview-thumbnail {
-  background-color: none !important;
-}
-
-#ctrlTab-panel .panel-arrowbox,
-#ctrlTab-panel .panel-arrowcontent > *,
-.ctrlTab-tabList,
-.ctrlTab-tab,
-.ctrlTab-preview-container,
-.ctrlTab-preview-thumbnail,
-.ctrlTab-preview-inner > *:not(img) {
-  background-color: none !important;
-}
-
-.ctrlTab-favicon-container {
-  display: none !important;
-}
-
-.ctrlTab-preview-inner > .ctrlTab-favicon {
-  display: none !important;
-}
-
-#ctrlTab-panel[fadeout] {
-  opacity: 1 !important;
-  visibility: visible !important;
-  transition: none !important;
-}
-
-#ctrlTab-panel:not([showing]) {
-  visibility: visible !important;
-  opacity: 1 !important;
+/**
+ * Global animation and transition effects
+ * Provides subtle motion feedback throughout the UI
+ */
+/* Fade in animation for new windows & tabs */
+:root {
+  --content-opacity: 1 !important;
 }
 
 /* Enhanced cursor animations */
-:root {
-  --cursor-default: default;
-  --cursor-pointer: pointer;
-  --cursor-text: text;
-}
-
 button,
 .button,
 .toolbarbutton-1,
@@ -465,15 +670,7 @@ button,
 .urlbar-icon,
 .panel-subview-body .subview-subheader {
   cursor: var(--cursor-pointer) !important;
-  transition: background-color 0.35s cubic-bezier(0.25, 0.1, 0.25, 1) !important;
-}
-
-button:hover,
-.button:hover,
-.toolbarbutton-1:hover,
-.subviewbutton:hover {
-  background-color: rgba(128, 128, 128, 0.2) !important;
-  transition: background-color 0.35s cubic-bezier(0.25, 0.1, 0.25, 1) !important;
+  transition: background-color var(--transition-fast) !important;
 }
 
 button:active,
@@ -493,48 +690,59 @@ textarea,
   cursor: var(--cursor-text) !important;
 }
 
-.tabbrowser-tab:hover {
-  background-color: rgba(128, 128, 128, 0.1) !important;
+/* Tab animations */
+.tabbrowser-tab {
+  transition: var(--tab-transition-duration) cubic-bezier(0.25, 0.1, 0.25, 1) !important;
 }
 
+.tabbrowser-tab[fadein] {
+  transition: var(--tab-transition-duration) cubic-bezier(0.25, 0.1, 0.25, 1) !important;
+}
+
+/* Browser container fade-in */
+.browserContainer[fadein="true"] {
+  transition: opacity 0.25s cubic-bezier(0.25, 0.1, 0.25, 1) !important;
+}
+
+/* Button hover effects */
 .toolbarbutton-1:hover,
 button:hover,
 .button:hover,
 .subviewbutton:hover {
   box-shadow: 0 0 8px 2px rgba(128, 128, 128, 0.2) !important;
-  transition: box-shadow 0.45s cubic-bezier(0.215, 0.61, 0.355, 1), 
-              background-color 0.35s cubic-bezier(0.25, 0.1, 0.25, 1) !important;
+  transition: box-shadow var(--transition-medium), 
+              background-color var(--transition-fast) !important;
 }
 
-/* Tab animations */
+/* Detailed tab background transitions */
 .tab-background {
-  transition: background-color 0.45s cubic-bezier(0.215, 0.61, 0.355, 1), 
-              box-shadow 0.45s cubic-bezier(0.215, 0.61, 0.355, 1), 
-              background 0.45s cubic-bezier(0.215, 0.61, 0.355, 1) !important;
+  transition: background-color var(--transition-medium), 
+              box-shadow var(--transition-medium), 
+              background var(--transition-medium) !important;
 }
 
 .tab-group-label-container {
-  transition: background-color 0.45s cubic-bezier(0.215, 0.61, 0.355, 1), 
-              box-shadow 0.45s cubic-bezier(0.215, 0.61, 0.355, 1), 
-              background 0.45s cubic-bezier(0.215, 0.61, 0.355, 1) !important;
+  transition: background-color var(--transition-medium), 
+              box-shadow var(--transition-medium), 
+              background var(--transition-medium) !important;
 }
 
 /* Toolbar button animations */
 .toolbarbutton-1 {
   &:hover > :is(.toolbarbutton-icon, .toolbarbutton-text, .toolbarbutton-badge-stack) {
-    transition: background-color 0.35s cubic-bezier(0.25, 0.1, 0.25, 1), 
-                outline-color 0.35s cubic-bezier(0.25, 0.1, 0.25, 1) !important; 
+    transition: background-color var(--transition-fast), 
+                outline-color var(--transition-fast) !important; 
   }
   
   > :is(.toolbarbutton-icon, .toolbarbutton-text, .toolbarbutton-badge-stack) {
-    transition: background-color 0.35s cubic-bezier(0.25, 0.1, 0.25, 1), 
-                outline-color 0.35s cubic-bezier(0.25, 0.1, 0.25, 1) !important;
+    transition: background-color var(--transition-fast), 
+                outline-color var(--transition-fast) !important;
   }
 }
 
 .identity-box-button {
-  transition: background-color 0.35s cubic-bezier(0.25, 0.1, 0.25, 1), 
-              outline-color 0.45s cubic-bezier(0.215, 0.61, 0.355, 1) !important;
+  transition: background-color var(--transition-fast), 
+              outline-color var(--transition-medium) !important;
 }
 
 /* URL bar controls animations */
@@ -549,13 +757,13 @@ button:hover,
 #page-action-buttons, 
 #urlbar-go-button, 
 #urlbar-revert-button-container {
-  transition: background-color 0.35s cubic-bezier(0.25, 0.1, 0.25, 1), 
-              outline-color 0.35s cubic-bezier(0.25, 0.1, 0.25, 1) !important;
+  transition: background-color var(--transition-fast), 
+              outline-color var(--transition-fast) !important;
 }
 
 /* Tab function icons animations */
 .close-icon {
-  transition: background-color 0.35s cubic-bezier(0.25, 0.1, 0.25, 1) !important;
+  transition: background-color var(--transition-fast) !important;
 }
 
 .close-icon:hover {
@@ -563,7 +771,7 @@ button:hover,
 }
 
 .tab-reset-button {
-  transition: background-color 0.35s cubic-bezier(0.25, 0.1, 0.25, 1) !important;
+  transition: background-color var(--transition-fast) !important;
 }
 
 .tab-reset-button:hover {
@@ -571,7 +779,7 @@ button:hover,
 }
 
 #tabs-newtab-button {
-  transition: background-color 0.35s cubic-bezier(0.25, 0.1, 0.25, 1) !important;
+  transition: background-color var(--transition-fast) !important;
 }
 
 #tabs-newtab-button:hover {
@@ -580,49 +788,52 @@ button:hover,
 
 /* Other UI element animations */
 .subviewbutton {
-  transition: background-color 0.35s cubic-bezier(0.25, 0.1, 0.25, 1) !important;
+  transition: background-color var(--transition-fast) !important;
 }
 
 .subviewbutton:hover {
   background-color: rgba(128, 128, 128, 0.2) !important;
 }
 
-.urlbarView-row-inner {
-  transition: background-color 0.35s cubic-bezier(0.25, 0.1, 0.25, 1) !important;
-}
+/* ============================================================================================== */
+/*                                     11. SCROLLBAR STYLING                                      */
+/* ============================================================================================== */
 
-.urlbarView-row-inner:hover {
-  background-color: rgba(128, 128, 128, 0.2) !important;
-}
-
-/* Improved scrollbar styling */
+/**
+ * Scrollbar customization for better accessibility
+ * Uses wider 14px bars with low opacity (0.15) for minimal visual distraction while maintaining usability
+ */
+/* Mozilla scrollbar styling */
 :root {
-  scrollbar-width: auto !important;
-  scrollbar-color: rgba(128, 128, 128, 0.096) transparent !important;
-}
-
-* {
   scrollbar-width: auto !important;
   scrollbar-color: rgba(128, 128, 128, 0.15) transparent !important;
 }
 
+/* Apply to all elements */
+* {
+  scrollbar-width: 14px !important;
+  scrollbar-color: rgba(128, 128, 128, 0.15) transparent !important;
+}
+
+/* Document specific scrollbar settings */
 @-moz-document url-prefix("") {
   * {
-    scrollbar-width: auto !important;
+    scrollbar-width: 14px !important;
     scrollbar-color: rgba(128, 128, 128, 0.15) transparent !important;
   }
   
   html, body {
-    scrollbar-width: auto !important;
+    scrollbar-width: 14px !important;
     scrollbar-color: rgba(128, 128, 128, 0.15) transparent !important;
   }
   
   div, section, article, aside, nav, main {
-    scrollbar-width: auto !important;
+    scrollbar-width: 14px !important;
     scrollbar-color: rgba(128, 128, 128, 0.15) transparent !important;
   }
 }
 
+/* WebKit scrollbar styling (for compatibility) */
 ::-webkit-scrollbar {
   width: 14px !important;
   height: 14px !important;
@@ -634,10 +845,10 @@ button:hover,
 
 ::-webkit-scrollbar-thumb {
   background-color: rgba(128, 128, 128, 0.15) !important;
-  border-radius: 3px !important;
+  border-radius: var(--cli-corner-radius) !important;
   border: 3px solid transparent !important;
   background-clip: content-box !important;
-  transition: background-color 0.45s cubic-bezier(0.215, 0.61, 0.355, 1) !important;
+  transition: background-color var(--transition-medium) !important;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -648,32 +859,151 @@ button:hover,
   background: transparent !important;
 }
 
-/* Border radius consistency */
-#urlbar {
-  border-radius: 3px !important;
+/* ============================================================================================== */
+/*                          12. MEDIA QUERIES & RESPONSIVE DESIGN                                 */
+/* ============================================================================================== */
+
+/** 
+ * Media queries for responsive design
+ * Adjusts styling based on window size and device parameters
+ */
+@media (max-width: 1024px) {
+  #urlbar {
+    width: 50vw !important; /* Wider URL bar on smaller screens */
+  }
 }
 
-#urlbar-background {
-  border-radius: 3px !important;
+@media (max-width: 768px) {
+  #urlbar {
+    width: 60vw !important; /* Even wider URL bar on very small screens */
+  }
+  
+  /* Adjust padding and margins for smaller screens */
+  #nav-bar, #sidebar-box, #tabbrowser-tabpanels {
+    margin: 2px !important;
+  }
 }
 
-.tab-background:is([selected], [multiselected]) {
-  border-radius: 3px !important;
+/* Zen Browser compact view styling */
+@media (-moz-bool-pref: "zen.view.compact") {
+  #tabbrowser-tabpanels {
+    padding: 0 !important;
+    transition: padding var(--transition-medium) !important;
+  }
+
+  #tabbrowser-tabpanels .browserSidebarContainer:not([zen-split="true"]) {
+    --zen-webview-border-radius: 0 !important;
+    --zen-element-separation: 0 !important;
+    transition: all var(--transition-medium) !important;
+  }
 }
 
+/* Document-specific rules */
+@-moz-document url-prefix("chrome:") {
+  @media (-moz-bool-pref: "zen.view.compact") and (-moz-bool-pref: "zen.view.compact.hide-tabbar") {
+    #navigator-toolbox {
+      margin: auto !important;
+      height: 75vh !important;
+      transition: height var(--transition-medium), 
+                margin var(--transition-medium) !important;
+    }
+  }
+
+  :root:not([customizing]) #back-button[disabled],
+  :root:not([customizing]) #forward-button[disabled] {
+    display: none !important;
+    transition: opacity var(--transition-fast) !important;
+  }
+}
+
+/* ============================================================================================== */
+/*                            13. BACKGROUND & WINDOW STYLING                                     */
+/* ============================================================================================== */
+
+/**
+ * Background styling for browser window
+ * Creates a dark, transparent aesthetic with blur effects
+ */
+#navigator-toolbox {
+  background-color: rgba(0, 0, 0, 0) !important;
+  transition: background-color var(--transition-medium), border-color var(--transition-fast) !important;
+  position: relative;
+  border: var(--cli-border-width) solid var(--cli-border-color) !important;
+  border-radius: var(--cli-corner-radius) !important;
+  margin-top: 12px !important;
+  margin-bottom: var(--cli-section-margin) !important;
+  margin-left: var(--cli-section-margin) !important;
+  margin-right: var(--cli-section-margin) !important;
+  padding-top: 2px !important;
+}
+
+#navigator-toolbox:hover {
+  border-color: var(--cli-border-hover-color) !important;
+}
+
+#navigator-toolbox::before {
+  content: "sidebar";
+  position: absolute;
+  top: -9px;
+  left: 10px;
+  background-color: var(--cli-title-background);
+  color: var(--cli-title-color);
+  padding: 0 8px;
+  font-size: 13px;
+  font-family: monospace;
+  font-weight: 500;
+  border-radius: 2px;
+  z-index: 100;
+  transition: color var(--transition-fast) !important;
+}
+
+#navigator-toolbox:hover::before {
+  color: var(--cli-title-hover-color);
+}
+
+#main-window {
+  background-color: rgba(41, 47, 52, 0.2) !important;
+  -moz-appearance: none !important;
+  appearance: none !important;
+  background-image: none !important;
+  --zen-main-browser-background: rgba(0, 0, 0, 0.5) !important;
+  transition: background-color 0.55s cubic-bezier(0.19, 1, 0.22, 1) !important;
+}
+
+/* Apply SVG mask background for slight visual texture */
+body::before {
+  content: "";
+  position: absolute;
+  height: 150vh;
+  width: 150vh;
+  opacity: 0.1 !important;
+  background-color: rgba(255, 255, 255, 0.05);
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: -999;
+  transition: all var(--transition-slow) ease-in-out;
+  transform-origin: center center;
+  pointer-events: none;
+}
+
+/* ============================================================================================== */
+/*                          14. CONSISTENCY FIXES & BORDER RADIUS                                 */
+/* ============================================================================================== */
+
+/**
+ * Consistency fixes for border-radius and other UI elements
+ * Ensures every component follows the same design language
+ */
 ::-webkit-scrollbar-thumb {
-  border-radius: 3px !important;
-}
-
-#statuspanel-label {
-  border-radius: 3px !important;
+  border-radius: var(--cli-corner-radius) !important;
 }
 
 button, 
 .button, 
 .toolbarbutton-1, 
 .subviewbutton {
-  border-radius: 3px !important;
+  border-radius: var(--cli-corner-radius) !important;
 }
 
 .urlbarView-row-inner,
@@ -689,6 +1019,24 @@ button,
 .identity-popup-security-content,
 .identity-popup-expander,
 .search-panel-input,
-.searchbar-textbox {
-  border-radius: 3px !important;
+.searchbar-textbox,
+.menuitem-iconic,
+.menu-iconic,
+.menu,
+.subviewbutton-nav,
+.toolbarbutton-badge,
+.autocomplete-richlistitem,
+.autocomplete-richlistbox {
+  border-radius: var(--cli-corner-radius) !important;
+}
+
+/* Consistent transitions for miscellaneous elements */
+#TabsToolbar,
+#tabbrowser-arrowscrollbox, 
+.browserSidebarContainer,
+.webextension-browser-action,
+.browserContainer.loading,
+.browserContainer.findbar-container,
+.browserContainer.deck-selected {
+  transition: opacity var(--transition-slow) !important;
 }
