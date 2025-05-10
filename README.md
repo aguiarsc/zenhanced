@@ -27,16 +27,6 @@
 
 The result is a browsing experience that combines the minimalism of Zen Browser with the aesthetic appeal of terminal interfaces.
 
-<div align="center">
-
-```
-   ┌─────────────────────┐
-   │    calm · focused   │
-   │ distraction-free UI │
-   └─────────────────────┘
-```
-
-</div>
 
 ## 🛠️ Installation
 
@@ -104,13 +94,5 @@ Built upon the foundations of [**Zenplified**](https://github.com/sejjy/zenplifi
 [**TextFox**](https://github.com/adriankarlen/textfox) by **adriankarlen**
 
 *Massive thanks for the inspiration!*
-
-</div>
-
----
-
-<div align="center">
-
-Made with ❤️ by [aguiarsc](https://github.com/aguiarsc)
 
 </div>
