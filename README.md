@@ -71,7 +71,6 @@ For the optimal Zenhanced experience:
 - 🎨 **Use Dark Theme** - The theme is designed for dark mode
 - 📏 **Default Layout** - Do NOT enable compact mode
 - ⌨️ **Custom Keybinds** - Set up keyboard navigation for a mouseless experience
-- 🔄 **Disable Workspaces** - For now, they don't have indicators propperly displayed (full support coming in future updates)
 
 ## 👥 Contribute
 
