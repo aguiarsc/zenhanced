@@ -4,7 +4,7 @@
 
 <img src="https://github.com/user-attachments/assets/e4a95783-e2df-4e0e-8562-77a37609a1c0" width="800">
 
-**A minimalist Firefox theme with CLI aesthetics for the ultimate Zen browsing experience**
+**A minimalist Zen Browser theme with CLI aesthetics for the ultimate Zen browsing experience**
 
 </div>
 
@@ -12,7 +12,7 @@
 
 ## ⚡️ Overview
 
-`Zenhanced` transforms your Firefox browser into a sleek, distraction-free environment with CLI-inspired aesthetics. Built atop Zen Browser's minimal interface, it adds:
+`Zenhanced` transforms your Zen Browser browser into a sleek, distraction-free environment with CLI-inspired aesthetics. Built atop Zen Browser's minimal interface, it adds:
 
 - 🖥️ **Beautiful CLI-style borders** with floating monospace labels 
 - 🌓 **Clean, dark aesthetic** with subtle transparency effects
@@ -27,7 +27,7 @@ The result is a browsing experience that combines the minimalism of Zen Browser 
 ## 🛠️ Installation
 
 ```bash
-# 1. First, enable custom CSS in Firefox
+# 1. First, enable custom CSS in Zen Browser
 about:config → toolkit.legacyUserProfileCustomizations.stylesheets → true
 
 # 2. Locate your profile folder
@@ -39,7 +39,7 @@ mkdir -p chrome
 # 4. Copy theme files
 cp userChrome.css userContent.css /path/to/chrome/
 
-# 5. Restart Firefox
+# 5. Restart Zen Browser
 ```
 
 ## ✨ Customization
